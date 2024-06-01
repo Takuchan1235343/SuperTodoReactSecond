@@ -1,10 +1,15 @@
 import './styles.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { InputTodo } from './components/InputTodo'
 import { IncompleteTodo } from './components/InCompleteTodo'
 import { CompleteTodo } from './components/CompleteTodo'
-import { auth, firestore } from './firebaseConfig'
-import { collection, doc, setDoc, getDoc } from 'firebase/firestore'
+import { deleteDoc, onSnapshot, setDoc } from 'firebase/firestore'
+import {
+  getIncompleteTodosRef,
+  getIncompleteTodoRef,
+  getCompleteTodosRef,
+  getCompleteTodoRef,
+} from './firestoreReference'
 
 export default function Todo () {
   const [todoText, setTodoText] = useState('')
@@ -13,54 +18,61 @@ export default function Todo () {
 
   const onChangeTodoText = (e) => setTodoText(e.target.value)
 
-  const onClickAdd = () => {
+  const randomId = () => Math.random().toString(32).substring(2)
+
+  const onClickAdd = async () => {
     if (todoText === '') return
-    const newTodos = [...incompleteTodos, todoText]
-    setIncompleteTodos(newTodos)
-    setTodoText('')
+
+    const newTodo = {
+      id: randomId(),
+      text: todoText,
+    }
+
+    await setDoc(getIncompleteTodoRef(newTodo.id), newTodo)
   }
 
-  const onClickComplete = (index) => {
-    const newIncompleteTodos = [...incompleteTodos]
-    const completedTodo = newIncompleteTodos.splice(index, 1)[0]
-    const newCompleteTodos = [...completeTodos, completedTodo]
-    setIncompleteTodos(newIncompleteTodos)
-    setCompleteTodos(newCompleteTodos)
+  const onClickComplete = async (index) => {
+    const targetTodo = incompleteTodos[index]
+
+    const incompleteTodoRef = getIncompleteTodosRef(targetTodo.id)
+    await deleteDoc(incompleteTodoRef)
+
+    const completeTodoRef = getCompleteTodoRef(targetTodo.id)
+    await setDoc(completeTodoRef, targetTodo)
   }
 
-  const onClickDelete = (index) => {
-    const newTodos = [...incompleteTodos]
-    newTodos.splice(index, 1)
-    setIncompleteTodos(newTodos)
+  const onClickDelete =async (index) => {
+    const targetTodo = incompleteTodos[index]
+    const incompleteTodoRef = getIncompleteTodosRef(targetTodo.id)
+    await deleteDoc(incompleteTodoRef)
   }
 
-  const onClickBack = (index) => {
-    const newCompleteTodos = [...completeTodos]
-    newCompleteTodos.splice(index, 1)
-    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]]
-    setCompleteTodos(newCompleteTodos)
-    setIncompleteTodos(newIncompleteTodos)
+  const onClickBack =async (index) => {
+    const targetTodo = completeTodos[index]
+
+    const completeTodoRef = getCompleteTodosRef(targetTodo.id)
+    await deleteDoc(completeTodoRef)
+
+    const incompleteTodoRef = getIncompleteTodoRef(targetTodo.id)
+    await setDoc(incompleteTodoRef, targetTodo)
   }
 
-  const onClickSave = async () => {
-    const colRef = collection(firestore, 'todos')
-    const userId = auth.currentUser.uid
-    const docRef = doc(colRef, userId)
-    await setDoc(docRef, {
-      incompleteTodos: incompleteTodos,
-      completeTodos: completeTodos
-    })
-  }
+  useEffect(() => {
 
-  const onClickLoad = async () => {
-    const colRef = collection(firestore, 'todos')
-    const userId = auth.currentUser.uid
-    const docRef = doc(colRef, userId)
-    const snapshot = await getDoc(docRef)
-    const data = snapshot.data()
-    setIncompleteTodos(data?.incompleteTodos ?? [])
-    setCompleteTodos(data?.completeTodos ?? [])
-  }
+    const unsubscribeIncomplete = onSnapshot(getIncompleteTodosRef(),
+      (snapshot) => {
+        setIncompleteTodos(snapshot.docs.map(doc => doc.data()))
+      })
+    const unsubscribeComplete = onSnapshot(getCompleteTodosRef(),
+      (snapshot) => {
+        setCompleteTodos(snapshot.docs.map(doc => doc.data()))
+      })
+
+    return () => {
+      unsubscribeIncomplete()
+      unsubscribeComplete()
+    }
+  }, [])
 
   const isMaxLimitInCompleteTodos = incompleteTodos.length >= 5
 
@@ -88,8 +100,6 @@ export default function Todo () {
         onClickBack={onClickBack}
       />
 
-      <button onClick={onClickSave}>保存</button>
-      <button onClick={onClickLoad}>読み込み</button>
     </>
   )
 }

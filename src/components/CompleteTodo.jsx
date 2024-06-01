@@ -15,9 +15,9 @@ export const CompleteTodo = (props) => {
       <p className="title">完了のTODO</p>
       <ul>
         {completeTodos.map((todo, index) => (
-          <li key={todo}>
+          <li key={todo.id}>
             <div className="list-row">
-              <p className="todo-item">{todo}</p>
+              <p className="todo-item">{todo.text}</p>
               <button onClick={() => onClickBack(index)}>戻す</button>
             </div>
           </li>
