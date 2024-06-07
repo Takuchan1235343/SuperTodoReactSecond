@@ -9,7 +9,7 @@ const style = {
 }
 
 export const IncompleteTodo = (props) => {
-  const { incompleteTodos, onClickComplete, onClickDelete } = props;
+  const { incompleteTodos, onClickComplete, onClickDelete } = props
   return (
     <div style={style}>
       <p className="title">未完了のTODO</p>
@@ -25,5 +25,5 @@ export const IncompleteTodo = (props) => {
         ))}
       </ul>
     </div>
-  );
+  )
 }

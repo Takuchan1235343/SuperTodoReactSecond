@@ -10,6 +10,7 @@ import {
   getCompleteTodosRef,
   getCompleteTodoRef,
 } from './firestoreReference'
+import { randomId } from './utils/randomid'
 
 export default function Todo () {
   const [todoText, setTodoText] = useState('')
@@ -17,8 +18,6 @@ export default function Todo () {
   const [completeTodos, setCompleteTodos] = useState([])
 
   const onChangeTodoText = (e) => setTodoText(e.target.value)
-
-  const randomId = () => Math.random().toString(32).substring(2)
 
   const onClickAdd = async () => {
     if (todoText === '') return
@@ -34,7 +33,7 @@ export default function Todo () {
   const onClickComplete = async (index) => {
     const targetTodo = incompleteTodos[index]
 
-    const incompleteTodoRef = getIncompleteTodosRef(targetTodo.id)
+    const incompleteTodoRef = getIncompleteTodoRef(targetTodo.id)
     await deleteDoc(incompleteTodoRef)
 
     const completeTodoRef = getCompleteTodoRef(targetTodo.id)
@@ -43,14 +42,14 @@ export default function Todo () {
 
   const onClickDelete =async (index) => {
     const targetTodo = incompleteTodos[index]
-    const incompleteTodoRef = getIncompleteTodosRef(targetTodo.id)
+    const incompleteTodoRef = getIncompleteTodoRef(targetTodo.id)
     await deleteDoc(incompleteTodoRef)
   }
 
   const onClickBack =async (index) => {
     const targetTodo = completeTodos[index]
 
-    const completeTodoRef = getCompleteTodosRef(targetTodo.id)
+    const completeTodoRef = getCompleteTodoRef(targetTodo.id)
     await deleteDoc(completeTodoRef)
 
     const incompleteTodoRef = getIncompleteTodoRef(targetTodo.id)
