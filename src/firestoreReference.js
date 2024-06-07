@@ -1,16 +1,35 @@
 import { collection, doc } from 'firebase/firestore'
 import { auth, firestore } from './firebaseConfig'
 
-export const getUserRef = () => doc(collection(firestore, 'users'), auth.currentUser.uid)
+// export const getUserRef = () => doc(collection(firestore, 'users'), auth.currentUser.uid)
+//
+// export const getIncompleteTodosRef = () => collection(getUserRef(), 'incompleteTodos')
+//
+// export const getIncompleteTodoRef = (todoId) =>{
+//  return  doc(getIncompleteTodosRef(), todoId)
+// }
+//
+// export const getCompleteTodosRef = () => collection(getUserRef(), 'completeTodos')
+//
+// export const getCompleteTodoRef = (todoId) =>{
+//   return  doc(getCompleteTodosRef(), todoId)
+// }
 
-export const getIncompleteTodosRef = () => collection(getUserRef(), 'incompleteTodos')
+export const refs = {
+  users () {
+    return collection(firestore, 'users')
+  },
 
-export const getIncompleteTodoRef = (todoId) =>{
- return  doc(getIncompleteTodosRef(), todoId)
-}
+  user () {
+    return doc(this.users(), auth.currentUser.uid)
+  },
 
-export const getCompleteTodosRef = () => collection(getUserRef(), 'completeTodos')
+  tasks () {
+    return collection(this.user(), 'tasks')
+  },
 
-export const getCompleteTodoRef = (todoId) =>{
-  return  doc(getCompleteTodosRef(), todoId)
+  task (taskId) {
+    return doc(this.tasks(), taskId)
+  }
+
 }
