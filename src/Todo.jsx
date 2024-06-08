@@ -5,40 +5,44 @@ import { IncompleteTodo } from './components/InCompleteTodo'
 import { CompleteTodo } from './components/CompleteTodo'
 import { deleteDoc, onSnapshot, setDoc } from 'firebase/firestore'
 import {
-  getIncompleteTodosRef,
-  getIncompleteTodoRef,
-  getCompleteTodosRef,
-  getCompleteTodoRef,
+  // getIncompleteTodosRef,
+  // getIncompleteTodoRef,
+  // getCompleteTodosRef,
+  // getCompleteTodoRef,
+  refs
 } from './firestoreReference'
-import { randomId } from './utils/randomid'
+import {
+  createTask,
+  completeTask,
+} from './hooks/useTasks'
 
 export default function Todo () {
-  const [todoText, setTodoText] = useState('')
+  // const [todoText, setTodoText] = useState('')
   const [incompleteTodos, setIncompleteTodos] = useState([])
   const [completeTodos, setCompleteTodos] = useState([])
 
-  const onChangeTodoText = (e) => setTodoText(e.target.value)
+  // const onChangeTodoText = (e) => setTodoText(e.target.value)
 
-  const onClickAdd = async () => {
-    if (todoText === '') return
+  // const onClickAdd = async () => {
+  //   if (todoText === '') return
+  //
+  //   const newTodo = {
+  //     id: randomId(),
+  //     text: todoText,
+  //   }
+  //
+  //   await setDoc(getIncompleteTodoRef(newTodo.id), newTodo)
+  // }
 
-    const newTodo = {
-      id: randomId(),
-      text: todoText,
-    }
-
-    await setDoc(getIncompleteTodoRef(newTodo.id), newTodo)
-  }
-
-  const onClickComplete = async (index) => {
-    const targetTodo = incompleteTodos[index]
-
-    const incompleteTodoRef = getIncompleteTodoRef(targetTodo.id)
-    await deleteDoc(incompleteTodoRef)
-
-    const completeTodoRef = getCompleteTodoRef(targetTodo.id)
-    await setDoc(completeTodoRef, targetTodo)
-  }
+  // const onClickComplete = async (index) => {
+  //   const targetTodo = incompleteTodos[index]
+  //
+  //   const incompleteTodoRef = getIncompleteTodoRef(targetTodo.id)
+  //   await deleteDoc(incompleteTodoRef)
+  //
+  //   const completeTodoRef = getCompleteTodoRef(targetTodo.id)
+  //   await setDoc(completeTodoRef, targetTodo)
+  // }
 
   const onClickDelete =async (index) => {
     const targetTodo = incompleteTodos[index]
@@ -78,9 +82,7 @@ export default function Todo () {
   return (
     <>
       <InputTodo
-        todoText={todoText}
-        onChangeTodoText={onChangeTodoText}
-        onClickAdd={onClickAdd}
+        onClickAdd={createTask()}
         disabled={isMaxLimitInCompleteTodos}
       />
 
@@ -89,8 +91,8 @@ export default function Todo () {
       )}
 
       <IncompleteTodo
-        incompleteTodos={incompleteTodos}
-        onClickComplete={onClickComplete}
+        tasks={incompleteTodos}
+        onClickComplete={completeTask}
         onClickDelete={onClickDelete}
       />
 

@@ -9,17 +9,17 @@ const style = {
 }
 
 export const IncompleteTodo = (props) => {
-  const { incompleteTodos, onClickComplete, onClickDelete } = props
+  const { tasks, onClickComplete, onClickDelete } = props
   return (
     <div style={style}>
       <p className="title">未完了のTODO</p>
       <ul>
-        {incompleteTodos.map((todo, index) => (
-          <li key={todo.id}>
+        {tasks.map((task) => (
+          <li key={task.id}>
             <div className="list-row">
-              <p className="todo-item">{todo.text}</p>
-              <button onClick={() => onClickComplete(index)}>完了</button>
-              <button onClick={() => onClickDelete(index)}>削除</button>
+              <p className="todo-item">{task.text}</p>
+              <button onClick={() => onClickComplete(task.id)}>完了</button>
+              <button onClick={() => onClickDelete(task.id)}>削除</button>
             </div>
           </li>
         ))}

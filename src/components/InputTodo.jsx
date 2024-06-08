@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const style = {
   backgroundColor: 'bisque',
   width: '400px',
@@ -8,16 +10,30 @@ const style = {
 }
 
 export const InputTodo = (props) => {
-  const { todoText, onChangeTodoText, onClickAdd, disabled } = props;
+  const { onClickAdd, disabled } = props;
+
+  const [todoText, setTodoText] = useState('')
+
+const handleChangeInput = (e) => setTodoText(e.target.value)
+
+const handleClickAdd = async () => {
+  if (todoText === '') return
+
+  onClickAdd(todoText)
+  setTodoText('')
+
+    }
+
+
   return (
     <div style={style}>
       <input
         disabled={disabled}
         placeholder="Todoを入力"
         value={todoText}
-        onChange={onChangeTodoText}
+        onChange={handleChangeInput}
       />
-      <button disabled={disabled} onClick={onClickAdd}>追加</button>
+      <button disabled={disabled} onClick={handleClickAdd}>追加</button>
     </div>
   );
 }
