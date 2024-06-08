@@ -17,7 +17,7 @@ export const IncompleteTodo = (props) => {
         {tasks.map((task) => (
           <li key={task.id}>
             <div className="list-row">
-              <p className="todo-item">{task.text}</p>
+              <p className="todo-item">{task.title}</p>
               <button onClick={() => onClickComplete(task.id)}>完了</button>
               <button onClick={() => onClickDelete(task.id)}>削除</button>
             </div>

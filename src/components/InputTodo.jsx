@@ -15,7 +15,6 @@ export const InputTodo = (props) => {
   const [todoText, setTodoText] = useState('')
 
 const handleChangeInput = (e) => setTodoText(e.target.value)
-
 const handleClickAdd = async () => {
   if (todoText === '') return
 
@@ -23,7 +22,6 @@ const handleClickAdd = async () => {
   setTodoText('')
 
     }
-
 
   return (
     <div style={style}>

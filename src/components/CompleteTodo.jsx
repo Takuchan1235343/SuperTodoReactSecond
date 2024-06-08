@@ -9,16 +9,16 @@ const style = {
 }
 
 export const CompleteTodo = (props) => {
-  const { completeTodos, onClickBack } = props
+  const { tasks, onClickBack } = props
   return (
     <div style={style}>
       <p className="title">完了のTODO</p>
       <ul>
-        {completeTodos.map((todo, index) => (
-          <li key={todo.id}>
+        {tasks.map((task) => (
+          <li key={task.id}>
             <div className="list-row">
-              <p className="todo-item">{todo.text}</p>
-              <button onClick={() => onClickBack(index)}>戻す</button>
+              <p className="todo-item">{task.title}</p>
+              <button onClick={() => onClickBack(task.id)}>戻す</button>
             </div>
           </li>
         ))}
