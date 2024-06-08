@@ -11,7 +11,7 @@ const styleFactory = (isHovered) => ({
   margin: '0 2px',
 })
 
-export const button = ({ children, onClick }) => {
+export const Button = ({ children, onClick }) => {
   const { isHovered, bind } = useHoverStyle()
 
   const style = useMemo(() => styleFactory(isHovered), [isHovered])

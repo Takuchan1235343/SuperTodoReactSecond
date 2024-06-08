@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Button } from './base/Button'
 
 const style = {
   backgroundColor: 'bisque',

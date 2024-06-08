@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Todo from './Todo'
 import { useAuth } from './hooks/useAuth'
+import { Button } from './components/base/Button'
 
 function App () {
   const [email, setEmail] = useState('')

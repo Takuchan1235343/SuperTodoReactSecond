@@ -10,19 +10,6 @@ input {
     padding: 6px 16px;
 }
 
-button {
-    border-radius: 8px;
-    border: none;
-    padding: 4px 16px;
-    margin: 0 2px;
-}
-
-button:hover {
-    background-color: #79a8a9;
-    color: white;
-    cursor: pointer;
-}
-
 .title {
     text-align: center;
     margin-top: 0;
