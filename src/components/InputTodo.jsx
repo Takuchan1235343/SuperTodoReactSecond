@@ -10,18 +10,18 @@ const style = {
 }
 
 export const InputTodo = (props) => {
-  const { onClickAdd, disabled } = props;
+  const { onClickAdd, disabled } = props
 
   const [todoText, setTodoText] = useState('')
 
-const handleChangeInput = (e) => setTodoText(e.target.value)
-const handleClickAdd = async () => {
-  if (todoText === '') return
+  const handleChangeInput = (e) => setTodoText(e.target.value)
+  const handleClickAdd = async () => {
+    if (todoText === '') return
 
-  onClickAdd(todoText)
-  setTodoText('')
+    onClickAdd(todoText)
+    setTodoText('')
 
-    }
+  }
 
   return (
     <div style={style}>
@@ -31,7 +31,11 @@ const handleClickAdd = async () => {
         value={todoText}
         onChange={handleChangeInput}
       />
-      <button disabled={disabled} onClick={handleClickAdd}>追加</button>
+      <Button
+        disabled={disabled}
+        onClick={handleClickAdd}
+      >追加
+      </Button>
     </div>
-  );
+  )
 }

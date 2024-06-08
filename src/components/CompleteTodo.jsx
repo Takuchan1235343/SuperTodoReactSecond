@@ -1,3 +1,5 @@
+import { Button } from './base/Button'
+
 const style = {
   backgroundColor: '#aacfd0',
   width: '400px',
@@ -18,7 +20,7 @@ export const CompleteTodo = (props) => {
           <li key={task.id}>
             <div className="list-row">
               <p className="todo-item">{task.title}</p>
-              <button onClick={() => onClickBack(task.id)}>戻す</button>
+              <Button onClick={() => onClickBack(task.id)}>戻す</Button>
             </div>
           </li>
         ))}

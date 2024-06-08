@@ -1,3 +1,5 @@
+import { Button } from './base/Button'
+
 const style = {
   border: '2px solid #aacfd0',
   width: '400px',
@@ -18,8 +20,8 @@ export const IncompleteTodo = (props) => {
           <li key={task.id}>
             <div className="list-row">
               <p className="todo-item">{task.title}</p>
-              <button onClick={() => onClickComplete(task.id)}>完了</button>
-              <button onClick={() => onClickDelete(task.id)}>削除</button>
+              <Button onClick={() => onClickComplete(task.id)}>完了</Button>
+              <Button onClick={() => onClickDelete(task.id)}>削除</Button>
             </div>
           </li>
         ))}
