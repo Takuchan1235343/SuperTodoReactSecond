@@ -38,7 +38,7 @@ export const CreateTaskForm = (props) => {
         onClick={handleClickAdd}
       >追加
       </Button>
-      {disabled && (<p style={{ color: 'red' }}>登録できるTODOは５個まで</p>)}
+      {disabled && (<p className="ErrarMessage-red">登録できるTODOは５個まで</p>)}
     </div>
   )
 }
