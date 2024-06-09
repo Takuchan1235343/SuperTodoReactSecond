@@ -10,7 +10,7 @@ const style = {
 
 }
 
-export const CompleteTodo = (props) => {
+export const CompleteTaskList = (props) => {
   const { tasks, onClickBack } = props
   return (
     <div style={style}>

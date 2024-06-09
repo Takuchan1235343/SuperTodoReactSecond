@@ -1,7 +1,6 @@
-import './styles.css'
-import { InputTodo } from './components/InputTodo'
-import { IncompleteTodo } from './components/InCompleteTodo'
-import { CompleteTodo } from './components/CompleteTodo'
+import { CreateTaskList } from './components/CreateTaskList'
+import { InCompleteTaskList } from './components/InCompleteTaskList'
+import { CompleteTaskList } from './components/CompleteTaskList'
 
 import {
   createTask,
@@ -9,7 +8,7 @@ import {
   incompleteTask,
   removeTask,
   useTasks,
-  } from './hooks/useTasks'
+} from './hooks/useTasks'
 
 export default function Todo () {
   const {
@@ -18,11 +17,9 @@ export default function Todo () {
     hasReachedTaskLimit
   } = useTasks()
 
-
-
   return (
     <>
-      <InputTodo
+      <CreateTaskList
         onClickAdd={createTask}
         disabled={hasReachedTaskLimit}
       />
@@ -31,13 +28,13 @@ export default function Todo () {
         <p style={{ color: 'red' }}>登録できるTODOは５個まで</p>
       )}
 
-      <IncompleteTodo
+      <InCompleteTaskList
         tasks={incompleteTasks}
         onClickComplete={completeTask}
         onClickDelete={removeTask}
       />
 
-      <CompleteTodo
+      <CompleteTaskList
         tasks={completeTasks}
         onClickBack={incompleteTask}
       />

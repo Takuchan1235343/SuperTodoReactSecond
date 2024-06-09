@@ -1,9 +1,9 @@
 import React from 'react'
-import Todo from './Todo'
 import { useAuth } from './hooks/useAuth'
 import { MainHeader } from './components/MainHeader'
 import { MainContent } from './components/MainContent'
 import { Login } from './components/Login'
+import './styles.css'
 
 function App () {
 
@@ -17,7 +17,7 @@ function App () {
             user={user}
             onClickSignOut={signOut}
           />
-          <MainContent><Todo/></MainContent>
+          <MainContent/>
         </>
       ) : (
         <Login

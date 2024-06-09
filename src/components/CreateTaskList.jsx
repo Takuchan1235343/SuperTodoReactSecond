@@ -11,7 +11,7 @@ const style = {
   borderRadius: '8px'
 }
 
-export const InputTodo = (props) => {
+export const CreateTaskList = (props) => {
   const { onClickAdd, disabled } = props
 
   const [todoText, setTodoText] = useState('')

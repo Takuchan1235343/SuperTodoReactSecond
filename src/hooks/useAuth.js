@@ -4,8 +4,8 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from 'firebase/auth'
-import { auth } from '../firebaseConfig'
-import { getErrorMessage } from '../auth'
+import { auth } from '../firebase/firebaseConfig'
+import { getErrorMessage } from '../firebase/auth'
 
 export const useAuth = () => {
   const [user, setUser] = useState(null)

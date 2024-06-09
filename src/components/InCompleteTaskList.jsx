@@ -10,7 +10,7 @@ const style = {
 
 }
 
-export const IncompleteTodo = (props) => {
+export const InCompleteTaskList = (props) => {
   const { tasks, onClickComplete, onClickDelete } = props
   return (
     <div style={style}>
