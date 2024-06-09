@@ -1,12 +1,12 @@
-const style = {
-  fontSize: 20,
-  marginRight: 20,
-}
+// const style = {
+//   fontSize: 20,
+//   marginRight: 20,
+// }
 
 export const Welcome = (props) => {
 
   const { user } = props
   return (
-    <div style={style}>Welcome, {user.email}</div>
+    <div className="text-xl mr-5 ">Welcome, {user.email}</div>
   )
 }
