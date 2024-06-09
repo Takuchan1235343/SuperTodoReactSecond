@@ -11,7 +11,7 @@ const style = {
 
 }
 
-export const InCompleteTaskList = (props) => {
+export const IncompleteTaskList = (props) => {
   const { tasks } = props
   return (
     <div style={style}>

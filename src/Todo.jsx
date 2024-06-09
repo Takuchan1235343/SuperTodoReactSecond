@@ -1,5 +1,5 @@
 import { CreateTaskList } from './components/CreateTaskList'
-import { InCompleteTaskList } from './components/InCompleteTaskList'
+import { IncompleteTaskList } from './components/IncompleteTaskList'
 import { CompleteTaskList } from './components/CompleteTaskList'
 
 import {
@@ -28,7 +28,7 @@ export default function Todo () {
         <p style={{ color: 'red' }}>登録できるTODOは５個まで</p>
       )}
 
-      <InCompleteTaskList
+      <IncompleteTaskList
         tasks={incompleteTasks}
         onClickComplete={completeTask}
         onClickDelete={removeTask}
