@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.jsx",
   "dependencies": {
+    "classnames": "^2.5.1",
     "firebase": "^10.12.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

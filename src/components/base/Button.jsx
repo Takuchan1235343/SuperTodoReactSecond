@@ -1,24 +1,18 @@
-import { useMemo } from 'react'
 import { useHoverStyle } from '../../hooks/useHoverStyle'
-
-const styleFactory = (isHovered) => ({
-  backgroundColor: isHovered ? '#79a8a9' : '#dddddd',
-  color: isHovered ? 'white' : 'initial',
-  cursor: 'pointer',
-  borderRadius: '8px',
-  border: 'none',
-  padding: '4px 16px',
-  margin: '0 2px',
-})
+import classNames from 'classnames'
 
 export const Button = ({ children, onClick }) => {
   const { isHovered, bind } = useHoverStyle()
 
-  const style = useMemo(() => styleFactory(isHovered), [isHovered])
-
   return (
     <button
-      style={style}
+      className={classNames(
+        'cursor-pointer border-2 rounded-lg p-1 px-4 m-0 mx-0.5',
+        {
+          'bg-[#79a8a9] text-white': isHovered,
+          'bg-[#dddddd] text-initial': !isHovered,
+        }
+      )}
       onClick={onClick} {...bind}>
       {children}
     </button>
