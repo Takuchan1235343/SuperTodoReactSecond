@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from './base/Button'
+import { Input } from './base/Input'
 
 const style = {
   backgroundColor: 'bisque',
@@ -26,7 +27,7 @@ export const InputTodo = (props) => {
 
   return (
     <div style={style}>
-      <input
+      <Input
         disabled={disabled}
         placeholder="Todoを入力"
         value={todoText}
