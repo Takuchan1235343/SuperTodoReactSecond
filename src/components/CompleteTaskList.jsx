@@ -1,5 +1,6 @@
 import { Button } from './base/Button'
 import { incompleteTask } from '../hooks/useTasks'
+import { Title } from './base/Title'
 
 const style = {
   backgroundColor: '#aacfd0',
@@ -15,7 +16,7 @@ export const CompleteTaskList = (props) => {
   const { tasks } = props
   return (
     <div style={style}>
-      <p className="title">完了のTODO</p>
+      <Title>完了のTODO</Title>
       <ul>
         {tasks.map((task) => (
           < Task
@@ -34,8 +35,8 @@ const Task = (props) => {
   const { task } = props
 
   return (
-    <li className="list-row">
-      <p className="todo-item">{task.title}</p>
+    <li style={{ display: 'flex', alignItems: 'center' }}>
+      <p style={{ margin: '6px' }}>{task.title}</p>
       <Button onClick={() => incompleteTask(task.id)}>戻す</Button>
     </li>
   )

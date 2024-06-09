@@ -4,19 +4,3 @@ body {
     color: #666;
 }
 
-.title {
-    text-align: center;
-    margin-top: 0;
-    font-weight: bold;
-}
-
-.list-row {
-    display: flex;
-    align-items: center;
-}
-
-.todo-item {
-    margin: 6px;
-}
-
-
