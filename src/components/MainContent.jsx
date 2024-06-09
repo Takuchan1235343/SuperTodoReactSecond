@@ -9,13 +9,12 @@ const style = {
   width: '100%',
 }
 
-const {
-  incompleteTasks,
-  completeTasks,
-  hasReachedTaskLimit
-} = useTasks()
-
 export const MainContent = () => {
+  const {
+    incompleteTasks,
+    completeTasks,
+    hasReachedTaskLimit
+  } = useTasks()
 
   return (
     <main style={style}>
