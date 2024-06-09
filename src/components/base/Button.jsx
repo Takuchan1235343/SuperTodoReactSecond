@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { useHoverStyle } from '../../hooks/useHoverStyle'
 
 const styleFactory = (isHovered) => ({

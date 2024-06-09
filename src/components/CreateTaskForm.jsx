@@ -1,18 +1,18 @@
 import { useState } from 'react'
 import { Button } from './base/Button'
 import { Input } from './base/Input'
+import { createTask } from '../hooks/useTasks'
 
 const style = {
   backgroundColor: 'bisque',
   width: '400px',
-  height: '30px',
   padding: '8px',
   margin: '8px',
   borderRadius: '8px'
 }
 
-export const CreateTaskList = (props) => {
-  const { onClickAdd, disabled } = props
+export const CreateTaskForm = (props) => {
+  const { disabled } = props
 
   const [todoText, setTodoText] = useState('')
 
@@ -20,7 +20,7 @@ export const CreateTaskList = (props) => {
   const handleClickAdd = async () => {
     if (todoText === '') return
 
-    onClickAdd(todoText)
+    await createTask(todoText)
     setTodoText('')
 
   }
@@ -38,6 +38,7 @@ export const CreateTaskList = (props) => {
         onClick={handleClickAdd}
       >追加
       </Button>
+      {disabled && (<p style={{ color: 'red' }}>登録できるTODOは５個まで</p>)}
     </div>
   )
 }

@@ -1,4 +1,3 @@
-import React from 'react'
 import { useAuth } from './hooks/useAuth'
 import { MainHeader } from './components/MainHeader'
 import { MainContent } from './components/MainContent'
