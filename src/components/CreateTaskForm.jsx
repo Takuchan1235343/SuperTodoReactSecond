@@ -3,14 +3,6 @@ import { Button } from './base/Button'
 import { Input } from './base/Input'
 import { createTask } from '../hooks/useTasks'
 
-const style = {
-  backgroundColor: 'bisque',
-  width: '400px',
-  padding: '8px',
-  margin: '8px',
-  borderRadius: '8px'
-}
-
 export const CreateTaskForm = (props) => {
   const { disabled } = props
 
@@ -26,7 +18,7 @@ export const CreateTaskForm = (props) => {
   }
 
   return (
-    <div style={style}>
+    <div className="bg-amber-200 w-[400px] p-2 m-2 rounded-lg ">
       <Input
         disabled={disabled}
         placeholder="Todoを入力"

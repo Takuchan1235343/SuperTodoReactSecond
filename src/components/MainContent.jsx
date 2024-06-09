@@ -3,12 +3,6 @@ import { IncompleteTaskList } from './IncompleteTaskList'
 import { CompleteTaskList } from './CompleteTaskList'
 import { useTasks } from '../hooks/useTasks'
 
-const style = {
-  display: 'flex',
-  justifyContent: 'center',
-  width: '100%',
-}
-
 export const MainContent = () => {
   const {
     incompleteTasks,
@@ -17,7 +11,7 @@ export const MainContent = () => {
   } = useTasks()
 
   return (
-    <main style={style}>
+    <main className="flex justify-center w-full">
       <CreateTaskForm disabled={hasReachedTaskLimit}/>
       <IncompleteTaskList tasks={incompleteTasks}/>
       <CompleteTaskList tasks={completeTasks}/>
