@@ -1,5 +1,8 @@
-import { collection, doc } from 'firebase/firestore'
-import { auth, firestore } from './firebaseConfig'
+import { collection, doc, getFirestore } from 'firebase/firestore'
+import { auth } from './auth'
+import { app } from './app'
+
+export const firestore = getFirestore(app)
 
 export const refs = {
   users () {

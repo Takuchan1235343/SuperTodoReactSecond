@@ -1,4 +1,4 @@
-import { refs } from '../firebase/firestoreReference'
+import { refs } from '../firebase/firestore'
 import { setDoc, updateDoc, deleteDoc, onSnapshot } from 'firebase/firestore'
 import { randomId } from '../utils/randomId'
 import { useEffect, useMemo, useState } from 'react'

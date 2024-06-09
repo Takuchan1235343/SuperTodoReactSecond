@@ -4,7 +4,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
 } from 'firebase/auth'
-import { auth } from '../firebase/firebaseConfig'
+import { auth } from '../firebase/auth'
 import { getErrorMessage } from '../firebase/auth'
 
 export const useAuth = () => {
