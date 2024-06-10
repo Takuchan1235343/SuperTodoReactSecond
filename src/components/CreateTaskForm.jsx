@@ -14,7 +14,6 @@ export const CreateTaskForm = (props) => {
 
     await createTask(todoText)
     setTodoText('')
-
   }
 
   return (
@@ -28,8 +27,7 @@ export const CreateTaskForm = (props) => {
       <Button
         disabled={disabled}
         onClick={handleClickAdd}
-      >追加
-      </Button>
+      >追加</Button>
       {disabled && (<p className="text-red-600">登録できるTODOは５個まで</p>)}
     </div>
   )

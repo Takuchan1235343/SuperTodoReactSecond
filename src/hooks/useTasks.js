@@ -50,7 +50,6 @@ export const useTasks = () => {
   )
 
   return {
-    tasks,
     incompleteTasks,
     completeTasks,
     hasReachedTaskLimit,

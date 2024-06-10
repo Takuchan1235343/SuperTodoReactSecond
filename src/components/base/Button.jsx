@@ -2,7 +2,7 @@ import { useHoverStyle } from '../../hooks/useHoverStyle'
 import classNames from 'classnames'
 
 export const Button = ({ children, onClick }) => {
-  const { isHovered, bind } = useHoverStyle()
+  const { isHovered, bind, disabled } = useHoverStyle()
 
   return (
     <button
@@ -13,7 +13,9 @@ export const Button = ({ children, onClick }) => {
           'bg-[#dddddd] text-initial': !isHovered,
         }
       )}
-      onClick={onClick} {...bind}>
+      onClick={onClick} {...bind}
+      disabled={disabled}
+    >
       {children}
     </button>
   )
