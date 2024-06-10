@@ -3,14 +3,6 @@ import { useState } from 'react'
 import { Input } from './base/Input'
 import { ErrorMessage } from './base/ErrorMessage'
 
-const style = {
-  backgroundColor: '#aacfd0',
-  width: '400px',
-  padding: '8px',
-  margin: '8px',
-  borderRadius: '8px',
-}
-
 export const Login = (props) => {
   const { onClickSignIn, onClickSignUp, errorMessage } = props
 
@@ -24,7 +16,7 @@ export const Login = (props) => {
 
   return (
     <form
-      style={style}
+      className="bg-emerald-200 w-[400px] p-2 m-2 rounded-lg"
       onSubmit={handleSubmit}
     >
       <Input
