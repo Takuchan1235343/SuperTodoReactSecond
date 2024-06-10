@@ -18,7 +18,7 @@ export const CreateTaskForm = (props) => {
   }
 
   return (
-    <div className="bg-amber-200 w-[400px] p-2 m-2 rounded-lg ">
+    <div className="bg-amber-200 w-auto p-2 m-2 rounded-lg ">
       <Input
         disabled={disabled}
         placeholder="Todoを入力"
@@ -30,7 +30,7 @@ export const CreateTaskForm = (props) => {
         onClick={handleClickAdd}
       >追加
       </Button>
-      {disabled && (<p className="ErrarMessage-red">登録できるTODOは５個まで</p>)}
+      {disabled && (<p className="text-red-600">登録できるTODOは５個まで</p>)}
     </div>
   )
 }
