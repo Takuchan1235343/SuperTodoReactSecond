@@ -27,12 +27,20 @@ export const incompleteTask = async (taskId) => {
 export const removeTask = async (taskId) => {
   const taskRef = refs.task(taskId)
   await deleteDoc(taskRef)
+
+  export const changePriority = async (taskId, priority) => {
+    const taskRef = refs.task(taskId)
+    await updateDoc(taskRef, { priority })
+  }
+
+
 }
 
 //ステータスのよる仕分け
 
 export const useTasks = () => {
   const [tasks, setTasks] = useState([])
+const [priority, setPriority] = useState(0)
 
   useEffect(() => onSnapshot(refs.tasks(), ({ docs }) => {
     setTasks(docs.map(doc => ({ ...doc.data() })))
@@ -50,9 +58,29 @@ export const useTasks = () => {
     () => incompleteTasks.length >= 5, [incompleteTasks]
   )
 
+
   return {
     incompleteTasks,
     completeTasks,
     hasReachedTaskLimit,
   }
+
+
+
+
+
 }
+
+// //priorityを変更
+// export const changePriority = (taskId) => {
+//   const [priority, setPriority] = useState(0)
+//
+//   useEffect(() => onSnapshot(refs.task(taskId), (doc) => {
+//     setPriority(doc.data().priority)
+//   }), [taskId])
+//
+//   return {
+//     priority,
+//     setPriority,
+//   }
+// }

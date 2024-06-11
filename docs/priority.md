@@ -41,16 +41,20 @@ react,TailWind,firebaseでいけるか？
 ### 1.newTask/createTask/useTasks.jsxでpriority:0を付与
 そのまんま新しく追加する
 
-### 2.seTask.jsにchangePriorityを作って任意の値に変更できるようにする
-優先度
+### 2.useTask.jsにchangePriorityを作って任意の値に変更できるようにする
+優先度を配列で数値化
 highImportantHighEmergency = 4
 highImportantLowEmergency = 3
 LowImportantHighEmergency = 2
 LowImportantLowEmergency = 1
 
+数字にボタンを割り当てる
+
 関数でボタンをまとめて配列で出す
 selectPriority[]
 mapで全て表示させる
 各ボタンに数字を割り振る
+
+### 3.useTask.jsにpriorityで並び替えれるようにする
 数字の大きい順に並び替える
 sort(tasksPriority)
