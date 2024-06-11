@@ -17,7 +17,7 @@ export const CreateTaskForm = (props) => {
   }
 
   return (
-    <div className="bg-amber-200 w-auto p-2 m-2 rounded-lg ">
+    <div className="bg-amber-200 w-full max-w-4xl min-w-96  flex flex-col md:flex-row justify-around p-2  m-2 items-center rounded-lg whitespace-nowrap">
       <Input
         disabled={disabled}
         placeholder="Todoを入力"

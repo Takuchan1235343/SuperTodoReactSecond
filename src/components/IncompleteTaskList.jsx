@@ -5,7 +5,7 @@ import { Title } from './base/Title'
 export const IncompleteTaskList = (props) => {
   const { tasks } = props
   return (
-    <div className="border-2 border-solid border-[#aacfd0] w-auto min-w-96 min-h-48 p-2 m-2 rounded-lg ">
+    <div className="border-2 border-solid border-[#aacfd0] m-2 min-w-96 min-h-96 p-4 rounded-lg ">
       <Title>未完了のTODO</Title>
       <ul>
         {tasks.map((task) => (

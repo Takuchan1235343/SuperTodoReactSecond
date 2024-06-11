@@ -5,7 +5,7 @@ import { Title } from './base/Title'
 export const CompleteTaskList = (props) => {
   const { tasks } = props
   return (
-    <div className="bg-emerald-200 w-auto min-w-96 min-h-48 p-2 m-2 rounded-lg">
+    <div className="bg-emerald-200 min-w-96 m-2 min-h-96 p-4 rounded-lg">
       <Title>完了のTODO</Title>
       <ul>
         {tasks.map((task) => (
@@ -19,10 +19,8 @@ export const CompleteTaskList = (props) => {
   )
 }
 
-//Liのコンポーネント化
-
 const Task = (props) => {
-  const { task } = props
+    const { task } = props
 
   return (
     <li className="flex align-middle">
