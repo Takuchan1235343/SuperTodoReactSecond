@@ -14,7 +14,7 @@ export const Button = ({ children, onClick }) => {
         }
       )}
       onClick={onClick} {...bind}
-      disabled={disabled}
+      // disabled={disabled}
     >
       {children}
     </button>
