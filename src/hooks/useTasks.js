@@ -9,6 +9,7 @@ export const createTask = async (title) => {
     title,
     id: randomId(),
     status: 'incomplete',
+    priority: 0,
   }
   await setDoc(refs.task(newTask.id), newTask)
 }
