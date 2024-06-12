@@ -34,27 +34,13 @@ react,TailWind,firebaseでいけるか？
 - 並び順はrandomIDに基づいている
 
 ### 予定
-- 1.newTask/createTask/useTasks.jsxでpriority:0を付与
-- 2.useTask.jsにchangePriorityを作って任意の値に変更できるようにする
-- 3.useTask.jsにpriorityで並び替えれるようにする
+- 1.newTask/createTask/useTasksでpriorityを生成
+- 2.PriorityComboBoxを作成してpriorityを変更するボックスを生成
+- 3.変更された値を取得してfirebaseのpriorityを変更
+- 4.変更された値に基づいて並び替えを行う（Firestore orderBy）
 
-### 1.newTask/createTask/useTasks.jsxでpriority:0を付与
-そのまんま新しく追加する
-
-### 2.useTask.jsにchangePriorityを作って任意の値に変更できるようにする
-優先度を配列で数値化
-highImportantHighEmergency = 4
-highImportantLowEmergency = 3
-LowImportantHighEmergency = 2
-LowImportantLowEmergency = 1
-
-数字にボタンを割り当てる
-
-関数でボタンをまとめて配列で出す
-selectPriority[]
-mapで全て表示させる
-各ボタンに数字を割り振る
-
-### 3.useTask.jsにpriorityで並び替えれるようにする
-数字の大きい順に並び替える
-sort(tasksPriority)
+- 設定箇所はタスク周りに設定
+- 流れは大丈夫
+- タスク機能周りで変更を実装
+- ソート部分はtasksの状態変更周りに入れる
+- refs.tasksをソートかけた状態で扱えるようにする
