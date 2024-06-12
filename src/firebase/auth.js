@@ -4,7 +4,7 @@ import { app } from './app'
 export const auth = getAuth(app)
 
 
-export const getErrorMessage = (error) => {
+export const getAuthErrorMessage = (error) => {
   const isError = error instanceof Error
 
   if (!isError) {
