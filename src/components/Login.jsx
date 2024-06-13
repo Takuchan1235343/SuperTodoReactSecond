@@ -27,6 +27,7 @@ export const Login = (props) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
+
             <div>
                 <Button onClick={() => onClickSignIn(email, password)}>Sign In</Button>
                 <Button onClick={() => onClickSignUp(email, password)}>Sign Up</Button>

@@ -4,6 +4,7 @@ import {
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signInWithPopup,
+    updateProfile
 } from 'firebase/auth'
 import {auth} from '../firebase/auth'
 import {getAuthErrorMessage} from '../firebase/auth'
@@ -32,9 +33,15 @@ export const useAuth = () => {
 
     const signInWithGoogle = async () => {
         clearError();
-        await signInWithPopup(auth, provider).catch(setError);
+        try {
+            const result = await signInWithPopup(auth, provider);
+            await updateProfile(result.user, {
+                displayName: user.displayName
+            });
+        } catch (error) {
+            setError(error);
+        }
     };
-
 
     const signOut = async () => {
         await auth.signOut()
