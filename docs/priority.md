@@ -6,22 +6,6 @@
     - 表を表示して選べるようにする
     - ボタンを押すと図が表示されるようにする
 
-## 2. Enterキーで追加できる機能
-
-- Enterキーを押すと、送信される機能
-    - isComposinngを使う
-    - innputに実装予定
-
-## 3. 対応中の追加
-
-- コンポーネントの追加
-    - correspondingTodoのコンポーネント作成
-- 中身の作成
-    - 未完了とほぼ同じもの
-        - 削除を戻るにする
-        - 完了ボタンを追加
-- IncompleteTodoの完了ボタンを対応中ボタンにする
-
 ## 4. Task名の長さでデザインが変わるのを抑える
 
 - 一定の文字数を超えたら、改行する
@@ -56,3 +40,4 @@
 - Googleアカウントでログインできるようにする
     - fireAuthの設定変更か？
 
+Input.jsx内でhandleChangeInput = (e) => setTodoText(e.target.value)を追加できるようにする

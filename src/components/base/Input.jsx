@@ -1,11 +1,6 @@
 export const Input = (props) => {
-    const {value, onChange, placeholder, type, disabled, onEnter} = props
+    const {value, onChange, placeholder, type, disabled,} = props
 
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            onEnter()
-        }
-    }
 
     return (
         <input
@@ -15,7 +10,6 @@ export const Input = (props) => {
             value={value}
             onChange={onChange}
             placeholder={placeholder}
-            onKeyDown={handleKeyDown}
         />
     )
 }

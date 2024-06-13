@@ -24,6 +24,11 @@ export const incompleteTask = async (taskId) => {
     await updateDoc(taskRef, {status: 'incomplete'})
 }
 
+export const correspondingTask = async (taskId) => {
+    const taskRef = refs.task(taskId)
+    await updateDoc(taskRef, {status: 'corresponding'})
+}
+
 export const removeTask = async (taskId) => {
     const taskRef = refs.task(taskId)
     await deleteDoc(taskRef)
@@ -53,6 +58,10 @@ export const useTasks = () => {
         () => tasks.filter(task => task.status === 'complete'), [tasks]
     )
 
+    const correspondingTasks = useMemo(
+        () => tasks.filter(task => task.status === 'corresponding'), [tasks]
+    )
+
     const hasReachedTaskLimit = useMemo(
         () => incompleteTasks.length >= 5, [incompleteTasks]
     )
@@ -62,6 +71,7 @@ export const useTasks = () => {
         incompleteTasks,
         completeTasks,
         hasReachedTaskLimit,
+        correspondingTasks,
     }
 
 
