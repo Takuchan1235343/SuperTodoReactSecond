@@ -13,14 +13,14 @@ export const CreateTaskForm = (props) => {
     const handleClickAdd = async () => {
         if (todoText === '') return
 
-        await createTask(todoText)
         setTodoText('')
+        await createTask(todoText)
     }
 
 
     return (
         <Form
-            className="bg-amber-200 w-full max-w-4xl min-w-96  flex flex-col md:flex-row justify-around p-2  m-2 items-center rounded-lg whitespace-nowrap"
+            className="bg-amber-200   flex flex-col md:flex-row justify-around w-11/12 max-w-4xl  items-center rounded-lg whitespace-nowrap"
             onSubmit={handleClickAdd}
         >
             <Input

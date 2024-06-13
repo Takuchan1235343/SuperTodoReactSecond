@@ -6,7 +6,7 @@ export const MainHeader = (props) => {
 
     return (
         <header
-            className="bg-indigo-500 w-11/12 max-w-4xl min-w-96 mx-auto flex flex-col md:flex-row justify-around p-2 m-2 rounded-lg">
+            className="bg-indigo-500 w-11/12 max-w-4xl min-w-96 mx-auto flex flex-col md:flex-row justify-around p-2  rounded-lg">
             <Welcome user={user}/>
             <Menu>
                 <Button onClick={onClickSignOut}>Sign Out</Button>

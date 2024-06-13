@@ -6,6 +6,7 @@ export const Button = ({children, onClick}) => {
 
     return (
         <button
+            type={'button'}
             className={classNames(
                 'cursor-pointer border-2 rounded-lg p-1 px-4 m-0 mx-0.5 max-h-16 font-mono',
                 {

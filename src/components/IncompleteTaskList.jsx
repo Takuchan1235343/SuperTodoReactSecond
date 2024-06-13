@@ -8,7 +8,7 @@ import {Calendar} from "./base/Calendar";
 export const IncompleteTaskList = (props) => {
     const {tasks} = props
     return (
-        <div className="border-2 border-solid border-[#aacfd0] rounded-lg p-4">
+        <div className="border-2 border-solid border-[#aacfd0]  rounded-lg p-4">
             <Title>未完了のTODO</Title>
             <ul>
                 {tasks.map((task) => (

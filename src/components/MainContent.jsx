@@ -13,7 +13,7 @@ export const MainContent = () => {
     } = useTasks()
 
     return (
-        <main className=" flex flex-col items-center">
+        <main className=" flex flex-col items-center ">
             <CreateTaskForm disabled={hasReachedTaskLimit}/>
             <div>
                 <IncompleteTaskList tasks={incompleteTasks}/>
