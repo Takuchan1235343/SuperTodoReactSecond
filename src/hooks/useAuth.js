@@ -3,9 +3,13 @@ import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
     signInWithEmailAndPassword,
+    signInWithPopup,
 } from 'firebase/auth'
 import {auth} from '../firebase/auth'
 import {getAuthErrorMessage} from '../firebase/auth'
+import {GoogleAuthProvider} from 'firebase/auth'
+
+const provider = new GoogleAuthProvider()
 
 export const useAuth = () => {
     const [user, setUser] = useState(null)
@@ -26,10 +30,16 @@ export const useAuth = () => {
         await signInWithEmailAndPassword(auth, email, password).catch(setError)
     }
 
+    const signInWithGoogle = async () => {
+        clearError();
+        await signInWithPopup(auth, provider).catch(setError);
+    };
+
+
     const signOut = async () => {
         await auth.signOut()
     }
-    return {signUp, signIn, signOut, user, errorMessage}
+    return {signUp, signIn, signOut, signInWithGoogle, user, errorMessage,}
 }
 
 

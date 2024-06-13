@@ -5,7 +5,7 @@ import {ErrorMessage} from './base/ErrorMessage'
 import {Form} from "./base/Form";
 
 export const Login = (props) => {
-    const {onClickSignIn, onClickSignUp, errorMessage} = props
+    const {onClickSignIn, onClickSignUp, errorMessage, onClickGoogleSignIn,} = props
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -30,9 +30,16 @@ export const Login = (props) => {
             <div>
                 <Button onClick={() => onClickSignIn(email, password)}>Sign In</Button>
                 <Button onClick={() => onClickSignUp(email, password)}>Sign Up</Button>
+
             </div>
+            <div>
+                <Button onClick={() => onClickGoogleSignIn()}>Sign in with Google</Button>
+            </div>
+
             {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         </Form>
+
+
     )
 
 }

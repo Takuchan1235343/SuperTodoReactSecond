@@ -1,33 +1,34 @@
-import { useAuth } from './hooks/useAuth'
-import { MainHeader } from './components/MainHeader'
-import { MainContent } from './components/MainContent'
-import { Login } from './components/Login'
+import {useAuth} from './hooks/useAuth'
+import {MainHeader} from './components/MainHeader'
+import {MainContent} from './components/MainContent'
+import {Login} from './components/Login'
 import './styles.css'
 
-function App () {
+function App() {
 
-  const { signUp, signIn, signOut, user, errorMessage } = useAuth()
+    const {signUp, signIn, signOut, signInWithGoogle, user, errorMessage} = useAuth()
 
-  return (
-    <>
-      {user ? (
+    return (
         <>
-          <MainHeader
-            user={user}
-            onClickSignOut={signOut}
-          />
-          <MainContent/>
-        </>
-      ) : (
-        <Login
-          onClickSignIn={signIn}
-          onClickSignUp={signUp}
-          errorMessage={errorMessage}
-        />
+            {user ? (
+                <>
+                    <MainHeader
+                        user={user}
+                        onClickSignOut={signOut}
+                    />
+                    <MainContent/>
+                </>
+            ) : (
+                <Login
+                    onClickSignIn={signIn}
+                    onClickSignUp={signUp}
+                    onClickGoogleSignIn={signInWithGoogle}
+                    errorMessage={errorMessage}
+                />
 
-      )}
-    </>
-  )
+            )}
+        </>
+    )
 }
 
 export default App
