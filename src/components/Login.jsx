@@ -12,7 +12,7 @@ export const Login = (props) => {
 
     return (
         <Form
-            className="bg-emerald-200 w-[400px] p-2 m-2 rounded-lg"
+            className="bg-emerald-200 w-11/12 max-w-4xl min-w-96 mx-auto flex flex-col justify-around p-2 m-2 rounded-lg items-center"
             onSubmit={() => onClickSignIn(email, password)}
         >
             <Input

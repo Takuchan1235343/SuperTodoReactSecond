@@ -5,7 +5,7 @@ import {Title} from './base/Title'
 export const CompleteTaskList = (props) => {
     const {tasks} = props
     return (
-        <div className="bg-emerald-200 min-w-96 m-2 min-h-96 p-4 rounded-lg">
+        <div className="bg-emerald-200 rounded-lg p-4">
             <Title>完了のTODO</Title>
             <ul>
                 {tasks.map((task) => (
@@ -23,10 +23,10 @@ const Task = (props) => {
     const {task} = props
 
     return (
-        <li className="flex align-middle">
-            <p className="m-1.5">{task.title}</p>
-            <Button onClick={() => correspondingTask(task.id)}>対応中</Button>
-            <Button onClick={() => removeTask(task.id)}>削除</Button>
+        <li className="flex items-center space-x-2 p-2 h-16">
+            <p className="flex-1 m-1.5">{task.title}</p>
+            <Button className="flex-none mx-1" onClick={() => correspondingTask(task.id)}>対応中</Button>
+            <Button className="flex-none mx-1" onClick={() => removeTask(task.id)}>削除</Button>
         </li>
     )
 }

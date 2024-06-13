@@ -2,7 +2,7 @@ import {useAuth} from './hooks/useAuth'
 import {MainHeader} from './components/MainHeader'
 import {MainContent} from './components/MainContent'
 import {Login} from './components/Login'
-import './styles.css'
+import './index.css'
 
 function App() {
 
