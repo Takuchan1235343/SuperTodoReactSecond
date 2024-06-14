@@ -1,8 +1,9 @@
 import {Title} from "./base/Title";
-import {Button} from "./base/Button";
-import {completeTask, incompleteTask} from "../hooks/useTasks";
 import {PriorityComboBox} from "./PriorityComboBox";
+import {StatusComboBox} from "./StatusComboBox";
 import {Calendar} from "./base/Calendar";
+import {Button} from "./base/Button";
+import {removeTask} from "../hooks/useTasks";
 
 
 export const CorrespondingTaskList = (props) => {
@@ -28,12 +29,21 @@ const Task = (props) => {
     const {task} = props
 
     return (
-        <li className="flex items-center space-x-2 p-2">
-            <p className="flex-1 m-1.5">{task.title}</p>
-            <Button className="flex-none mx-1" onClick={() => completeTask(task.id)}>完了</Button>
-            <Button className="flex-none mx-1" onClick={() => incompleteTask(task.id)}>未完了</Button>
-            <PriorityComboBox className="flex-none mx-1" task={task}/>
-            <Calendar className="flex-none mx-1"/>
+        <li className="flex items-center justify-between space-x-2 p-2 w-full">
+            <div className='w-1/4 break-words'>
+                <p className="m-1.5">{task.title}</p>
+            </div>
+            <div className='w-1/4 flex flex-col items-center'>
+                <StatusComboBox className="mx-1" task={task}/>
+                <PriorityComboBox className="mx-1" task={task}/>
+            </div>
+            <div className='w-1/4 flex flex-col items-center'>
+                <Calendar className="mx-1"/>
+            </div>
+            <div className='w-1/4 flex flex-col items-center'>
+                <Button onClick={() => removeTask(task.id)}>消去</Button>
+            </div>
         </li>
+
     )
 }

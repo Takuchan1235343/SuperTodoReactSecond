@@ -6,7 +6,8 @@ export const MainHeader = (props) => {
 
     return (
         <header
-            className="bg-indigo-500 w-11/12 max-w-4xl min-w-96 mx-auto flex flex-col md:flex-row justify-around p-2  rounded-lg">
+            className="bg-indigo-500 w-4/5 flex flex-col md:flex-row justify-center
+              rounded-lg">
             <Welcome user={user}/>
             <Menu>
                 <Button onClick={onClickSignOut}>Sign Out</Button>
@@ -17,5 +18,5 @@ export const MainHeader = (props) => {
 
 const Menu = (props) => {
     const {children} = props
-    return <div className="p-2">{children}</div>
+    return <div className="p-4">{children}</div>
 }

@@ -14,21 +14,6 @@ export const createTask = async (title) => {
     await setDoc(refs.task(newTask.id), newTask)
 }
 
-export const completeTask = async (taskId) => {
-    const taskRef = refs.task(taskId)
-    await updateDoc(taskRef, {status: 'complete'})
-}
-
-export const incompleteTask = async (taskId) => {
-    const taskRef = refs.task(taskId)
-    await updateDoc(taskRef, {status: 'incomplete'})
-}
-
-export const correspondingTask = async (taskId) => {
-    const taskRef = refs.task(taskId)
-    await updateDoc(taskRef, {status: 'corresponding'})
-}
-
 export const removeTask = async (taskId) => {
     const taskRef = refs.task(taskId)
     await deleteDoc(taskRef)
@@ -37,6 +22,12 @@ export const removeTask = async (taskId) => {
 export const changePriority = async (taskId, newPriority) => {
     const taskRef = refs.task(taskId)
     await updateDoc(taskRef, {priority: newPriority})
+
+}
+export const changeStatus = async (taskId, newStatus) => {
+    const taskRef = refs.task(taskId)
+    await updateDoc(taskRef, {status: newStatus})
+
 }
 
 

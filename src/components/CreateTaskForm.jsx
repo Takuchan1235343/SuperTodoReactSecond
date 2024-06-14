@@ -20,19 +20,23 @@ export const CreateTaskForm = (props) => {
 
     return (
         <Form
-            className="bg-amber-200   flex flex-col md:flex-row justify-around w-11/12 max-w-4xl  items-center rounded-lg whitespace-nowrap"
+            className="bg-amber-200 flex flex-col md:flex-row justify-center w-full items-center rounded-lg "
             onSubmit={handleClickAdd}
         >
-            <Input
-                disabled={disabled}
-                placeholder="Todoを入力"
-                value={todoText}
-                onChange={handleChangeInput}
-            />
-            <Button
-                disabled={disabled}
-                onClick={handleClickAdd}
-            >追加</Button>
+            <div className='p-2'>
+                <Input
+                    disabled={disabled}
+                    placeholder="Todoを入力"
+                    value={todoText}
+                    onChange={handleChangeInput}
+                />
+            </div>
+            <div className='p-2'>
+                <Button
+                    disabled={disabled}
+                    onClick={handleClickAdd}
+                >追加</Button>
+            </div>
             {/*{disabled && (<p className="text-red-600">登録できるTODOは５個まで</p>)}*/}
         </Form>
     )

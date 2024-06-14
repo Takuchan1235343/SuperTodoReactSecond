@@ -13,9 +13,9 @@ export const MainContent = () => {
     } = useTasks()
 
     return (
-        <main className=" flex flex-col items-center ">
-            <CreateTaskForm disabled={hasReachedTaskLimit}/>
-            <div>
+        <main className=" flex flex-col items-center w-4/5 space-y-2 ">
+            <CreateTaskForm className="w-full" disabled={hasReachedTaskLimit}/>
+            <div className="w-full space-y-2 ">
                 <IncompleteTaskList tasks={incompleteTasks}/>
                 <CorrespondingTaskList tasks={correspondingTasks}/>
                 <CompleteTaskList tasks={completeTasks}/>
