@@ -11,11 +11,11 @@ export const PriorityComboBox = ({task}) => {
             <select id='priority' value={task.priority}
                     onChange={handleChange}
                     className=
-                        'cursor-pointer border-2 rounded-lg p-1 px-4 m-0 mx-0.5 items-center'
+                        'cursor-pointer border-2 rounded-lg p-1 px-4 m-0 items-center min-w-32 mx-auto'
             >
-                <option value="0">優先度を選択</option>
+                <option value="0">優先度</option>
                 <option value="1">あとで</option>
-                <option value="2">ちょっと優先</option>
+                <option value="2">少し優先</option>
                 <option value="3">優先</option>
                 <option value="4">超優先</option>
             </select>

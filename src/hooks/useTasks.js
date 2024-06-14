@@ -22,12 +22,11 @@ export const removeTask = async (taskId) => {
 export const changePriority = async (taskId, newPriority) => {
     const taskRef = refs.task(taskId)
     await updateDoc(taskRef, {priority: newPriority})
-
 }
+
 export const changeStatus = async (taskId, newStatus) => {
     const taskRef = refs.task(taskId)
     await updateDoc(taskRef, {status: newStatus})
-
 }
 
 
