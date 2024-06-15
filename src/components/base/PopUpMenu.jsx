@@ -1,8 +1,8 @@
 import {useState, useRef, useEffect} from 'react';
 import {StatusComboBox} from "../StatusComboBox";
 import {PriorityComboBox} from "../PriorityComboBox";
-import {Calendar} from "./Calendar";
-import {MemoComponent} from "./Memo";
+import {Calendar} from "../Calendar";
+import {MemoComponent} from "../Memo";
 
 export const PopUpMenu = (props) => {
     const {task} = props;
@@ -48,7 +48,7 @@ export const PopUpMenu = (props) => {
                     <div>menu</div>
                     <StatusComboBox className="mx-1" task={task}/>
                     <PriorityComboBox className="mx-1" task={task}/>
-                    <Calendar className="mx-1"/>
+                    <Calendar className="mx-1" task={task}/>
                     <MemoComponent className="mx-1"/>
                 </div>
             )}

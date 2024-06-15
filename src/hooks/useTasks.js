@@ -9,7 +9,8 @@ export const createTask = async (title) => {
         title,
         id: randomId(),
         status: 'incomplete',
-        priority: 0,
+        date: new Date(),
+        Memo: '',
     }
     await setDoc(refs.task(newTask.id), newTask)
 }
@@ -29,6 +30,10 @@ export const changeStatus = async (taskId, newStatus) => {
     await updateDoc(taskRef, {status: newStatus})
 }
 
+export const changeDate = async (taskId, newDate) => {
+    const taskRef = refs.task(taskId)
+    await updateDoc(taskRef, {date: newDate})
+}
 
 //ステータスのよる仕分け
 

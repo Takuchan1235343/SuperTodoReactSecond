@@ -8,6 +8,7 @@ export const PriorityComboBox = ({task}) => {
 
     return (
         <li>
+
             <select id='priority' value={task.priority}
                     onChange={handleChange}
                     className=
