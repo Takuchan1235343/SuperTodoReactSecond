@@ -1,36 +1,57 @@
-import React, {useState} from 'react';
+import {useState, useRef, useEffect} from 'react';
+import {StatusComboBox} from "../StatusComboBox";
+import {PriorityComboBox} from "../PriorityComboBox";
+import {Calendar} from "./Calendar";
+import {MemoComponent} from "./Memo";
 
-export const PopUpMenu = () => {
+export const PopUpMenu = (props) => {
+    const {task} = props;
 
     const [isShown, setIsShown] = useState(false);
+    const menuRef = useRef(null)
 
     const handleToggleMenu = () => {
-        setIsShown(true);
+        setIsShown(prevIsShown => !prevIsShown)
     }
 
-    const handleCloseMenu = () => {
-        setIsShown(false);
-
+    const handleClickOutside = (e) => {
+        if (menuRef.current && !menuRef.current.contains(e.target)) {
+            setIsShown(false)
+        }
     }
+
+    useEffect(() => {
+        if (isShown) {
+            document.addEventListener('click', handleClickOutside)
+        } else {
+            document.removeEventListener('click', handleClickOutside)
+        }
+        return () => {
+            document.removeEventListener('click', handleClickOutside)
+        }
+    }, [])
 
     return (
-        <div className='popup-menu-container '>
+        <div
+            className='popup-menu-container items-center '>
             <button
                 onClick={handleToggleMenu}
-                className={'bg-blue-500 text-white py-1 px-2 rounded-lg'}
+                className={'border-2 rounded-lg px-4 font-mono min-w-24 mx-auto'}
             >
-                ToggleMenu
+                Menu
             </button>
-            <div
-                className={` ${isShown ? 'scale-100' : 'scale-0'} absolute　z-10 w-40 mt-2 p-4 bg-neutral-50　rounded-lg transform transition-transform  border-2`}
-            >
-                <div>menu</div>
 
-
-                <button onClick={handleCloseMenu}>
-                    close Menu
-                </button>
-            </div>
+            {isShown && (
+                <div
+                    className='z-10 p-4 bg-neutral-50　rounded-lg transform transition-transform  border-2'
+                >
+                    <div>menu</div>
+                    <StatusComboBox className="mx-1" task={task}/>
+                    <PriorityComboBox className="mx-1" task={task}/>
+                    <Calendar className="mx-1"/>
+                    <MemoComponent className="mx-1"/>
+                </div>
+            )}
         </div>
     );
 }

@@ -1,10 +1,7 @@
 import {Title} from "./base/Title";
-import {PriorityComboBox} from "./PriorityComboBox";
-import {StatusComboBox} from "./StatusComboBox";
-import {Calendar} from "./base/Calendar";
 import {Button} from "./base/Button";
 import {removeTask} from "../hooks/useTasks";
-import {MemoComponent} from "./base/Memo";
+import {PopUpMenu} from "./base/PopUpMenu";
 
 
 export const CorrespondingTaskList = (props) => {
@@ -29,18 +26,14 @@ const Task = (props) => {
 
     return (
         <li className="flex items-center justify-between space-x-2 p-2 w-full">
-            <div className='w-1/4 break-words'>
+            <div className='w-1/3 break-words'>
                 <p className="m-1.5">{task.title}</p>
             </div>
-            <div className='w-1/4 flex flex-col items-center'>
-                <StatusComboBox className="mx-1" task={task}/>
-                <PriorityComboBox className="mx-1" task={task}/>
+            <div
+                className='w-1/3 flex flex-col items-center'>
+                <PopUpMenu className="mx-1" task={task}/>
             </div>
-            <div className='w-1/4 flex flex-col items-center'>
-                <Calendar className="mx-1"/>
-                <MemoComponent className="mx-1"/>
-            </div>
-            <div className='w-1/4 flex flex-col items-center'>
+            <div className='w-1/3 flex flex-col items-center'>
                 <Button onClick={() => removeTask(task.id)}>消去</Button>
             </div>
         </li>

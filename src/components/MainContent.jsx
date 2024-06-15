@@ -3,7 +3,6 @@ import {IncompleteTaskList} from './IncompleteTaskList'
 import {CompleteTaskList} from './CompleteTaskList'
 import {CorrespondingTaskList} from "./CorrespondingTaskList";
 import {useTasks} from '../hooks/useTasks'
-import {PopUpMenu} from "./base/PopUpMenu";
 
 export const MainContent = () => {
     const {
@@ -21,7 +20,6 @@ export const MainContent = () => {
                 <CorrespondingTaskList tasks={correspondingTasks}/>
                 <CompleteTaskList tasks={completeTasks}/>
             </div>
-            <PopUpMenu></PopUpMenu>
         </main>
     )
 }
