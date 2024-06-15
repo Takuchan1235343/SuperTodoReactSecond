@@ -37,6 +37,7 @@ const Task = (props) => {
                 <PriorityComboBox className="mx-1" task={task}/>
             </div>
             <div className='w-1/4 flex flex-col items-center'>
+
                 <Calendar className="mx-1"/>
                 <MemoComponent className="mx-1"/>
             </div>
