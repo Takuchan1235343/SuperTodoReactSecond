@@ -22,6 +22,7 @@ export const CreateTaskForm = () => {
             className="bg-amber-200 flex flex-col md:flex-row justify-center w-full items-center rounded-lg "
             onSubmit={handleClickAdd}
         >
+
             <div className='p-2'>
                 <Input
                     placeholder="Todoを入力"
@@ -31,11 +32,7 @@ export const CreateTaskForm = () => {
             </div>
 
             <div className='p-2'>
-                <Button
-                    onClick={handleClickAdd}
-                >
-                    追加
-                </Button>
+                <Button onClick={handleClickAdd}> 追加 </Button>
             </div>
         </Form>
     )
