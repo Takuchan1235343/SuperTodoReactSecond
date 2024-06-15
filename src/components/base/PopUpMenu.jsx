@@ -8,32 +8,33 @@ export const PopUpMenu = (props) => {
     const {task} = props;
 
     const [isShown, setIsShown] = useState(false);
-    const menuRef = useRef(null)
+    const menuRef = useRef(null);
 
-    const handleToggleMenu = () => {
-        setIsShown(prevIsShown => !prevIsShown)
-    }
+    const handleToggleMenu = (e) => {
+        e.stopPropagation()
+        setIsShown(prevIsShown => !prevIsShown);
+    };
 
     const handleClickOutside = (e) => {
+
         if (menuRef.current && !menuRef.current.contains(e.target)) {
-            setIsShown(false)
+            setIsShown(false);
         }
-    }
+    };
 
     useEffect(() => {
         if (isShown) {
-            document.addEventListener('click', handleClickOutside)
+            document.addEventListener('click', handleClickOutside);
         } else {
-            document.removeEventListener('click', handleClickOutside)
+            document.removeEventListener('click', handleClickOutside);
         }
         return () => {
-            document.removeEventListener('click', handleClickOutside)
-        }
-    }, [])
+            document.removeEventListener('click', handleClickOutside);
+        };
+    }, [isShown]);
 
     return (
-        <div
-            className='popup-menu-container items-center '>
+        <div className='popup-menu-container items-center'>
             <button
                 onClick={handleToggleMenu}
                 className={'border-2 rounded-lg px-4 font-mono min-w-24 mx-auto'}
@@ -43,7 +44,8 @@ export const PopUpMenu = (props) => {
 
             {isShown && (
                 <div
-                    className='z-10 p-4 bg-neutral-50　rounded-lg transform transition-transform  border-2'
+                    ref={menuRef}
+                    className='z-10 p-4 bg-neutral-50 rounded-lg transform transition-transform border-2'
                 >
                     <div>menu</div>
                     <StatusComboBox className="mx-1" task={task}/>

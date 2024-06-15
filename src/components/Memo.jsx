@@ -3,20 +3,20 @@ import {changeMemo} from "../hooks/useTasks";
 
 export const MemoComponent = ({task}) => {
     const [isExpanded, setIsExpanded] = useState(false);
-
-    const handleInputChange = (e) => {
-        const newMemo = e.target.value;
-        return changeMemo(task.id, newMemo);
+    const [text, setText] = useState(task.memo);
+    const handleBlur = () => {
+        setIsExpanded(false);
+        return changeMemo(task.id, text);
     };
 
     const textareaRows = useMemo(() => isExpanded ? 3 : 1, [isExpanded]);
 
     return (
         <textarea
-            value={task.memo}
-            onChange={handleInputChange}
+            value={text}
+            onChange={e => setText(e.target.value)}
             onFocus={() => setIsExpanded(true)}
-            onBlur={() => setIsExpanded(false)}
+            onBlur={handleBlur}
             className="border rounded break-words"
             rows={textareaRows}
         />

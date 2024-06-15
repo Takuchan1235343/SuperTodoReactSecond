@@ -11,6 +11,7 @@ export const createTask = async (title) => {
         status: 'incomplete',
         date: new Date(),
         memo: '',
+        priority: 0
     }
     await setDoc(refs.task(newTask.id), newTask)
 }
