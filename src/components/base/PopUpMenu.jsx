@@ -49,7 +49,7 @@ export const PopUpMenu = (props) => {
                     <StatusComboBox className="mx-1" task={task}/>
                     <PriorityComboBox className="mx-1" task={task}/>
                     <Calendar className="mx-1" task={task}/>
-                    <MemoComponent className="mx-1"/>
+                    <MemoComponent className="mx-1" task={task}/>
                 </div>
             )}
         </div>

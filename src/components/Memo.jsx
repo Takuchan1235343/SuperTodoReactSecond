@@ -1,31 +1,25 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
+import {changeMemo} from "../hooks/useTasks";
 
-export const MemoComponent = () => {
-    const [memo, setMemo] = useState('');
+export const MemoComponent = ({task}) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
-    const handleInputChange = (event) => {
-        setMemo(event.target.value);
+    const handleInputChange = (e) => {
+        const newMemo = e.target.value;
+        return changeMemo(task.id, newMemo);
     };
 
-    const toggleExpand = () => {
-        setIsExpanded(!isExpanded);
-    };
+    const textareaRows = useMemo(() => isExpanded ? 3 : 1, [isExpanded]);
 
     return (
-        <div>
-      <textarea
-          value={memo}
-          onChange={handleInputChange}
-          className={`${isExpanded ? 'block' : 'hidden'}  h-8  border rounded break-words`}
-      />
-            <div
-                onClick={toggleExpand}
-                className='border-2 rounded-lg px-4 font-mono min-w-24 mx-auto'
-            >
-                {isExpanded ? memo : `${memo.substring(0, 5)}　　　`}
-            </div>
-        </div>
+        <textarea
+            value={task.memo}
+            onChange={handleInputChange}
+            onFocus={() => setIsExpanded(true)}
+            onBlur={() => setIsExpanded(false)}
+            className="border rounded break-words"
+            rows={textareaRows}
+        />
     );
 };
 
