@@ -16,7 +16,7 @@ export const MainContent = () => {
 
             <CreateTaskForm className="w-full"/>
 
-            <div className="w-full space-y-2 ">
+            <div id='portal-root' className="w-full space-y-2 ">
                 <IncompleteTaskList tasks={incompleteTasks}/>
                 <CorrespondingTaskList tasks={correspondingTasks}/>
                 <CompleteTaskList tasks={completeTasks}/>
