@@ -4,6 +4,7 @@ import {Calendar} from "./base/Calendar";
 import {StatusComboBox} from "./StatusComboBox";
 import {Button} from "./base/Button";
 import {removeTask} from "../hooks/useTasks";
+import {MemoComponent} from "./base/Memo";
 
 
 export const IncompleteTaskList = (props) => {
@@ -23,8 +24,6 @@ export const IncompleteTaskList = (props) => {
     )
 }
 
-//Liをコンポーネント化
-
 const Task = (props) => {
     const {task} = props
 
@@ -39,6 +38,7 @@ const Task = (props) => {
             </div>
             <div className='w-1/4 flex flex-col items-center'>
                 <Calendar className="mx-1"/>
+                <MemoComponent className="mx-1"/>
             </div>
             <div className='w-1/4 flex flex-col items-center'>
                 <Button onClick={() => removeTask(task.id)}>消去</Button>
