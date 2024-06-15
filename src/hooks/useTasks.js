@@ -52,15 +52,10 @@ export const useTasks = () => {
         () => tasks.filter(task => task.status === 'corresponding'), [tasks]
     )
 
-    const hasReachedTaskLimit = useMemo(
-        () => incompleteTasks.length >= 5, [incompleteTasks]
-    )
-
 
     return {
         incompleteTasks,
         completeTasks,
-        hasReachedTaskLimit,
         correspondingTasks,
     }
 

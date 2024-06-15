@@ -4,8 +4,7 @@ import {Input} from './base/Input'
 import {createTask} from '../hooks/useTasks'
 import {Form} from "./base/Form";
 
-export const CreateTaskForm = (props) => {
-    const {disabled} = props
+export const CreateTaskForm = () => {
 
     const [todoText, setTodoText] = useState('')
 
@@ -25,19 +24,19 @@ export const CreateTaskForm = (props) => {
         >
             <div className='p-2'>
                 <Input
-                    disabled={disabled}
                     placeholder="Todoを入力"
                     value={todoText}
                     onChange={handleChangeInput}
                 />
             </div>
+
             <div className='p-2'>
                 <Button
-                    disabled={disabled}
                     onClick={handleClickAdd}
-                >追加</Button>
+                >
+                    追加
+                </Button>
             </div>
-            {/*{disabled && (<p className="text-red-600">登録できるTODOは５個まで</p>)}*/}
         </Form>
     )
 }
