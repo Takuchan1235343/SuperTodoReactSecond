@@ -4,7 +4,7 @@ import {Task} from "./Task";
 export const BaseTaskList = (props) => {
     const {tasks, className, title} = props
     return (
-        <div className={className}>
+        <div id='portal-root' className={className}>
             <Title>{title}</Title>
             <ul>
                 {tasks.map((task) => (
