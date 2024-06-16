@@ -62,9 +62,13 @@ const MenuTab = ({ task, menuRef, buttonRef }) => {
   }, [])
 
   useEffect(() => {
+    window.addEventListener('scroll', setPosition)
     window.addEventListener('resize', setPosition)
     setPosition()
-    return () => window.removeEventListener('resize', setPosition)
+    return () => {
+      window.removeEventListener('scroll', setPosition)
+      window.removeEventListener('resize', setPosition)
+    }
   }, [])
 
   return createPortal(
