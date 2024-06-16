@@ -12,7 +12,7 @@ export const MainContent = () => {
     } = useTasks()
 
     return (
-        <main className=" flex flex-col items-center w-4/5 space-y-2 ">
+        <main id='portal-root' className=" flex flex-col items-center w-4/5 space-y-2 ">
 
             <CreateTaskForm className="w-full"/>
 

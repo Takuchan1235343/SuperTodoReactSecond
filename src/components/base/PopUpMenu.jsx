@@ -3,6 +3,7 @@ import {StatusComboBox} from "../StatusComboBox";
 import {PriorityComboBox} from "../PriorityComboBox";
 import {Calendar} from "../Calendar";
 import {MemoComponent} from "../Memo";
+import {createPortal} from "react-dom";
 
 export const PopUpMenu = (props) => {
     const {task} = props;
@@ -34,26 +35,39 @@ export const PopUpMenu = (props) => {
     }, [isShown]);
 
     return (
+
         <div className='popup-menu-container items-center'>
-            <button
-                onClick={handleToggleMenu}
-                className={'border-2 rounded-lg px-4 font-mono min-w-24 mx-auto'}
-            >
-                Menu
-            </button>
+
+            {!isShown && (
+                <button
+                    onClick={handleToggleMenu}
+                    className={'border-2 bg-white rounded-lg px-4 font-mono min-w-24 mx-auto'}
+                >
+                    Menu
+                </button>
+            )}
 
             {isShown && (
-                <div
-                    ref={menuRef}
-                    className='z-10 p-4 bg-neutral-50 rounded-lg transform transition-transform border-2'
-                >
-                    <div>menu</div>
-                    <StatusComboBox className="mx-1" task={task}/>
-                    <PriorityComboBox className="mx-1" task={task}/>
-                    <Calendar className="mx-1" task={task}/>
-                    <MemoComponent className="mx-1" task={task}/>
-                </div>
+                <MenuTab task={task} menuRef={menuRef}/>
             )}
         </div>
     );
 }
+
+const MenuTab = (props) => {
+    const {task, menuRef} = props;
+
+    return createPortal(
+        <div
+            ref={menuRef}
+            className='z-10 p-4 bg-white rounded-lg transform transition-transform border-2'
+        >
+            <StatusComboBox className="mx-1" task={task}/>
+            <PriorityComboBox className="mx-1" task={task}/>
+            <Calendar className="mx-1" task={task}/>
+            <MemoComponent className="mx-1" task={task}/>
+        </div>,
+        document.getElementById('portal-root')
+    )
+}
+
