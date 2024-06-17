@@ -11,7 +11,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 export const PopUpMenu = (props) => {
     const {task} = props
 
-    const {isShown: isShownMenu, handleToggle: handleToggleMenu, menuRef: menuRef} = useToggle()
+    const {isShown: isShownMenu, handleToggle: handleToggleMenu, targetRef: menuRef} = useToggle()
 
     const buttonRef = useRef(null)
 

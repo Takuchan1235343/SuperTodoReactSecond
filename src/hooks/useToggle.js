@@ -2,7 +2,7 @@ import {useState, useRef, useEffect} from 'react'
 
 export const useToggle = () => {
     const [isShown, setIsShown] = useState(false)
-    const menuRef = useRef(null)
+    const targetRef = useRef(null)
 
     const handleToggle = (e) => {
         e.stopPropagation()
@@ -10,7 +10,7 @@ export const useToggle = () => {
     }
 
     const handleClickOutside = (e) => {
-        if (menuRef.current && !menuRef.current.contains(e.target)) {
+        if (targetRef.current && !targetRef.current.contains(e.target)) {
             setIsShown(false)
         }
     }
@@ -26,7 +26,7 @@ export const useToggle = () => {
         }
     }, [isShown])
 
-    return {isShown, handleToggle, menuRef}
+    return {isShown, handleToggle, targetRef}
 
 
 }
