@@ -3,42 +3,16 @@ import {Button} from './base/Button'
 import {changePriority} from "../hooks/useTasks";
 
 export const PriorityComboBox = ({task}) => {
-    const {isShown: isShownPriority, handleToggle: handleToggle, menuRef: matrixRef} = useToggle()
+    const {isShown: isShownPriority, handleToggle: handleTogglePriority, menuRef: matrixRef} = useToggle()
 
-    // const [isShownPriority, setIsShownPriority] = useState(false)
-    // const matrixRef = useRef(null)
-    //
     const handlePrioritySelect = (newPriority) => {
         return changePriority(task.id, newPriority)
     }
-    // }
-    //
-    // const handleTogglePriority = (e) => {
-    //     e.stopPropagation()
-    //     setIsShownPriority(prevIsShownPriority => !prevIsShownPriority)
-    // }
-    //
-    // const handleClickOutside = (e) => {
-    //     if (matrixRef.current && !matrixRef.current.contains(e.target)) {
-    //         setIsShownPriority(false)
-    //     }
-    // }
-    //
-    // useEffect(() => {
-    //     if (isShownPriority) {
-    //         document.addEventListener('click', handleClickOutside)
-    //     } else {
-    //         document.removeEventListener('click', handleClickOutside)
-    //     }
-    //     return () => {
-    //         document.removeEventListener('click', handleClickOutside)
-    //     }
-    // }, [isShownPriority]);
-
+    
     return (
         <div>
             <li>
-                <Button onClick={handleToggle}>
+                <Button onClick={handleTogglePriority}>
                     {PriorityText({priority: task.priority})}
                 </Button>
 

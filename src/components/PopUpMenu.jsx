@@ -1,4 +1,5 @@
-import {useState, useRef, useEffect, useCallback} from 'react'
+import {useRef, useEffect, useCallback} from 'react'
+import {useToggle} from '../hooks/useToggle'
 import {StatusComboBox} from './StatusComboBox'
 import {PriorityComboBox} from './PriorityComboBox'
 import {Calendar} from './Calendar'
@@ -7,33 +8,12 @@ import {createPortal} from 'react-dom'
 import {faBars} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-export const PopUpMenu = (task) => {
+export const PopUpMenu = (props) => {
+    const {task} = props
 
-    const [isShown, setIsShown] = useState(false)
-    const menuRef = useRef(null)
+    const {isShown: isShownMenu, handleToggle: handleToggleMenu, menuRef: menuRef} = useToggle()
+
     const buttonRef = useRef(null)
-
-    const handleToggleMenu = (e) => {
-        e.stopPropagation()
-        setIsShown(prevIsShown => !prevIsShown)
-    }
-
-    const handleClickOutside = (e) => {
-        if (menuRef.current && !menuRef.current.contains(e.target)) {
-            setIsShown(false)
-        }
-    }
-
-    useEffect(() => {
-        if (isShown) {
-            document.addEventListener('click', handleClickOutside)
-        } else {
-            document.removeEventListener('click', handleClickOutside)
-        }
-        return () => {
-            document.removeEventListener('click', handleClickOutside)
-        }
-    }, [isShown])
 
     return (
 
@@ -47,7 +27,7 @@ export const PopUpMenu = (task) => {
                 <FontAwesomeIcon icon={faBars}/>
             </button>
 
-            {isShown && (
+            {isShownMenu && (
                 <MenuTab task={task} menuRef={menuRef} buttonRef={buttonRef}/>
             )}
         </div>
