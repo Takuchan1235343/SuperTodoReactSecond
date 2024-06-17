@@ -1,7 +1,7 @@
 import {useRef, useEffect, useCallback} from 'react'
 import {useToggle} from '../hooks/useToggle'
 import {StatusComboBox} from './StatusComboBox'
-import {PriorityComboBox} from './PriorityComboBox'
+import {PriorityMatrix} from './PriorityMatrix'
 import {Calendar} from './Calendar'
 import {MemoComponent} from './Memo'
 import {createPortal} from 'react-dom'
@@ -58,7 +58,7 @@ const MenuTab = ({task, menuRef, buttonRef}) => {
             className="z-10 p-4 bg-white rounded-lg fixed border-2"
         >
             <StatusComboBox className="mx-1" task={task}/>
-            <PriorityComboBox className="mx-1" task={task}/>
+            <PriorityMatrix className="mx-1" task={task}/>
             <Calendar className="mx-1" task={task}/>
             <MemoComponent className="mx-1" task={task}/>
         </div>,

@@ -2,13 +2,13 @@ import {useToggle} from "../hooks/useToggle";
 import {Button} from './base/Button'
 import {changePriority} from "../hooks/useTasks";
 
-export const PriorityComboBox = ({task}) => {
+export const PriorityMatrix = ({task}) => {
     const {isShown: isShownPriority, handleToggle: handleTogglePriority, menuRef: matrixRef} = useToggle()
 
     const handlePrioritySelect = (newPriority) => {
         return changePriority(task.id, newPriority)
     }
-    
+
     return (
         <div>
             <li>
@@ -18,7 +18,7 @@ export const PriorityComboBox = ({task}) => {
 
             </li>
             {isShownPriority &&
-                <PriorityMatrix onSelectPriority={handlePrioritySelect} matrixRef={matrixRef}/>
+                <PriorityMatrixChart onSelectPriority={handlePrioritySelect} matrixRef={matrixRef}/>
             }
         </div>
     )
@@ -40,7 +40,7 @@ const PriorityText = ({priority}) => {
 }
 
 
-const PriorityMatrix = ({onSelectPriority, matrixRef}) => {
+const PriorityMatrixChart = ({onSelectPriority, matrixRef}) => {
 
     return (
         <div ref={matrixRef} className="relative grid grid-cols-2 gap-4 w-64 h-64 m-9">

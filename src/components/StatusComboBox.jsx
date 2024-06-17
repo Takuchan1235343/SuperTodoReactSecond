@@ -8,6 +8,7 @@ export const StatusComboBox = ({task}) => {
 
     return (
         <li>
+
             <select id='status' value={task.status}
                     onChange={handleChange}
                     className=
