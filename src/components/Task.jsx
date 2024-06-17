@@ -12,11 +12,14 @@ export const Task = (props) => {
                 <p className="m-1.5">{task.title}</p>
             </div>
             <div
-                className='w-1/3 flex flex-col items-center '>
+                className='w-1/3 flex flex-col items-center '
+            >
                 <PopUpMenu className="mx-1" task={task}/>
             </div>
             <div className='w-1/3 flex flex-col items-center '>
-                <Button onClick={() => removeTask(task.id)}><FontAwesomeIcon icon={faTrashAlt}/></Button>
+                <Button onClick={() => removeTask(task.id)}>
+                    <FontAwesomeIcon icon={faTrashAlt}/>
+                </Button>
             </div>
         </li>
     )

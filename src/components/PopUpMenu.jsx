@@ -22,7 +22,7 @@ export const PopUpMenu = (props) => {
             <button
                 ref={buttonRef}
                 onClick={handleToggleMenu}
-                className={'border-2 bg-white rounded-lg px-4 font-mono min-w-24 mx-auto'}
+                className='border-2 bg-white rounded-lg px-4 font-mono min-w-24 mx-auto'
             >
                 <FontAwesomeIcon icon={faBars}/>
             </button>
