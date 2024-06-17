@@ -4,6 +4,8 @@ import {PriorityComboBox} from './PriorityComboBox'
 import {Calendar} from './Calendar'
 import {MemoComponent} from './Memo'
 import {createPortal} from 'react-dom'
+import {faBars} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export const PopUpMenu = (props) => {
     const {task} = props
@@ -43,7 +45,7 @@ export const PopUpMenu = (props) => {
                 onClick={handleToggleMenu}
                 className={'border-2 bg-white rounded-lg px-4 font-mono min-w-24 mx-auto'}
             >
-                Menu
+                <FontAwesomeIcon icon={faBars}/>
             </button>
 
             {isShown && (

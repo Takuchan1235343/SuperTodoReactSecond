@@ -7,7 +7,7 @@ export const Button = ({children, onClick}) => {
         <button
             type={'button'}
 
-            className={`${isHovered ? 'bg-[#79a8a9] text-white' : 'bg-[#dddddd] text-initial'} cursor-pointer border-2 rounded-lg px-4 font-mono min-w-24 mx-auto`}
+            className={`${isHovered ? 'bg-[#79a8a9] text-white' : 'bg-white text-initial'} cursor-pointer border-2 rounded-lg px-4 font-mono min-w-24 mx-auto`}
 
             onClick={onClick} {...bind}
             disabled={disabled}
