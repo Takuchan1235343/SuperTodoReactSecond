@@ -7,8 +7,7 @@ import {createPortal} from 'react-dom'
 import {faBars} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-export const PopUpMenu = (props) => {
-    const {task} = props
+export const PopUpMenu = (task) => {
 
     const [isShown, setIsShown] = useState(false)
     const menuRef = useRef(null)

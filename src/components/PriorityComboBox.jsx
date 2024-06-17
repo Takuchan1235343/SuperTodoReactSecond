@@ -1,42 +1,44 @@
-import {changePriority} from '../hooks/useTasks'
-import {useEffect, useState} from 'react'
-import {useRef} from 'react'
+import {useToggle} from "../hooks/useToggle";
 import {Button} from './base/Button'
+import {changePriority} from "../hooks/useTasks";
 
 export const PriorityComboBox = ({task}) => {
-    const [isShownPriority, setIsShownPriority] = useState(false)
-    const matrixRef = useRef(null)
+    const {isShown: isShownPriority, handleToggle: handleToggle, menuRef: matrixRef} = useToggle()
 
+    // const [isShownPriority, setIsShownPriority] = useState(false)
+    // const matrixRef = useRef(null)
+    //
     const handlePrioritySelect = (newPriority) => {
         return changePriority(task.id, newPriority)
     }
-
-    const handleTogglePriority = (e) => {
-        e.stopPropagation()
-        setIsShownPriority(prevIsShownPriority => !prevIsShownPriority)
-    }
-
-    const handleClickOutside = (e) => {
-        if (matrixRef.current && !matrixRef.current.contains(e.target)) {
-            setIsShownPriority(false)
-        }
-    }
-
-    useEffect(() => {
-        if (isShownPriority) {
-            document.addEventListener('click', handleClickOutside)
-        } else {
-            document.removeEventListener('click', handleClickOutside)
-        }
-        return () => {
-            document.removeEventListener('click', handleClickOutside)
-        }
-    }, [isShownPriority]);
+    // }
+    //
+    // const handleTogglePriority = (e) => {
+    //     e.stopPropagation()
+    //     setIsShownPriority(prevIsShownPriority => !prevIsShownPriority)
+    // }
+    //
+    // const handleClickOutside = (e) => {
+    //     if (matrixRef.current && !matrixRef.current.contains(e.target)) {
+    //         setIsShownPriority(false)
+    //     }
+    // }
+    //
+    // useEffect(() => {
+    //     if (isShownPriority) {
+    //         document.addEventListener('click', handleClickOutside)
+    //     } else {
+    //         document.removeEventListener('click', handleClickOutside)
+    //     }
+    //     return () => {
+    //         document.removeEventListener('click', handleClickOutside)
+    //     }
+    // }, [isShownPriority]);
 
     return (
         <div>
             <li>
-                <Button onClick={handleTogglePriority}>
+                <Button onClick={handleToggle}>
                     {PriorityText({priority: task.priority})}
                 </Button>
 
@@ -73,7 +75,8 @@ const PriorityMatrix = ({onSelectPriority, matrixRef}) => {
             <div className='absolute top-0 bottom-0 left-1/2 border-l-2 border-gray-500'></div>
             {/*各項目*/}
             <div className='absolute top-1/3 left-full ml-2 transform -translate-y-1/2　text-gray-500'>重要</div>
-            <div className='absolute top-1/3 right-full ml-2 transform -translate-y-1/2　text-gray-500'>緊急でない</div>
+            <div className='absolute top-1/3 right-full ml-2 transform -translate-y-1/2　text-gray-500'>緊急でない
+            </div>
             <div className='absolute bottom-full left-1/3 ml-2 transform -translate-y-1/2　text-gray-500'>緊急</div>
             <div className='absolute top-full left-1/3 ml-2 transform -translate-y-1/2　text-gray-500'>緊急でない
             </div>
