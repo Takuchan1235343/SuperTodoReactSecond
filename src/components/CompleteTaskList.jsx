@@ -1,11 +1,11 @@
 import {BaseTaskList} from "./BaseTaskList";
-import {Draggable} from "react-beautiful-dnd";
+import {Droppable} from "react-beautiful-dnd";
 
 export const CompleteTaskList = (props) => {
     const {tasks} = props
 
     return (
-        <Draggable droppabled='complete'>
+        <Droppable droppableId='complete'>
             {(provided) => (
                 <div
                     ref={provided.innerRef}
@@ -20,6 +20,6 @@ export const CompleteTaskList = (props) => {
                     </BaseTaskList>
                 </div>
             )}
-        </Draggable>
+        </Droppable>
     )
 }
