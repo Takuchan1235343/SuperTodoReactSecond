@@ -12,7 +12,7 @@ export const StatusComboBox = ({task}) => {
             <select id='status' value={task.status}
                     onChange={handleChange}
                     className=
-                        'cursor-pointer border-2 rounded-lg p-1 px-4  items-center w-32'
+                        'cursor-pointer border-2 rounded-lg p-1 px-4 text-center w-32'
             >
                 <option value="incomplete">未対応</option>
                 <option value="corresponding">対応中</option>
