@@ -5,7 +5,8 @@ export const useToggle = () => {
     const targetRef = useRef(null)
 
     const handleToggle = (e) => {
-        e.stopPropagation()
+        if (e && e.stopPropagation)
+            e.stopPropagation()
         setIsShown(prevIsShown => !prevIsShown)
     }
 

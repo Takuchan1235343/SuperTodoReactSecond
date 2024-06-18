@@ -2,13 +2,19 @@ import {useToggle} from "../hooks/useToggle";
 import {Button} from './base/Button'
 import {changePriority} from "../hooks/useTasks";
 
+
 export const PriorityMatrix = ({task}) => {
-    const {isShown: isShownPriority, handleToggle: handleTogglePriority, targetRef: matrixRef} = useToggle()
+    const {
+        isShown: isShownPriority,
+        handleToggle: handleTogglePriority,
+        targetRef: matrixRef,
+    } = useToggle()
 
-    const handlePrioritySelect = (newPriority) => {
-        return changePriority(task.id, newPriority)
-
+    const handlePrioritySelect = async (newPriority) => {
+        await changePriority(task.id, newPriority)
+        handleTogglePriority()
     }
+
 
     return (
         <div>
@@ -19,7 +25,7 @@ export const PriorityMatrix = ({task}) => {
 
             </li>
             {isShownPriority &&
-                <PriorityMatrixChart onSelectPriority={handlePrioritySelect} matrixRef={matrixRef}/>
+                <PriorityMatrixChart handlePrioritySelect={handlePrioritySelect} matrixRef={matrixRef}/>
             }
         </div>
     )
@@ -41,7 +47,7 @@ const PriorityText = ({priority}) => {
 }
 
 
-const PriorityMatrixChart = ({onSelectPriority, matrixRef}) => {
+const PriorityMatrixChart = ({handlePrioritySelect, matrixRef}) => {
 
     return (
         <div ref={matrixRef} className="relative grid grid-cols-2 gap-4 w-64 h-64 m-9">
@@ -63,19 +69,19 @@ const PriorityMatrixChart = ({onSelectPriority, matrixRef}) => {
             </div>
             {/*各マトリックス*/}
             <div className="bg-yellow-400 text-black flex items-center justify-center cursor-pointer rounded-lg p-1"
-                 onClick={() => onSelectPriority(2)}>
+                 onClick={() => handlePrioritySelect(2)}>
                 C<br/>重要ではないが緊急
             </div>
             <div className="bg-red-400 text-white flex items-center justify-center cursor-pointer rounded-lg p-1"
-                 onClick={() => onSelectPriority(4)}>
+                 onClick={() => handlePrioritySelect(4)}>
                 A<br/>重要かつ緊急
             </div>
             <div className="bg-gray-400 text-black flex items-center justify-center cursor-pointer rounded-lg p-1"
-                 onClick={() => onSelectPriority(1)}>
+                 onClick={() => handlePrioritySelect(1)}>
                 D<br/>重要でも緊急でもない
             </div>
             <div className="bg-blue-400 text-white flex items-center justify-center cursor-pointer rounded-lg p-1"
-                 onClick={() => onSelectPriority(3)}>
+                 onClick={() => handlePrioritySelect(3)}>
                 B<br/>緊急ではないが重要
             </div>
         </div>
