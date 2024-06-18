@@ -5,7 +5,7 @@ export const MainHeader = (props) => {
     const {user, onClickSignOut} = props
 
     return (
-        <header className="bg-indigo-500 w-4/5 flex flex-col md:flex-row justify-center rounded-lg">
+        <header className="bg-indigo-500 w-4/5 flex flex-col md:flex-row justify-center items-center rounded-lg">
 
             <Welcome user={user}/>
 

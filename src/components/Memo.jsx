@@ -12,14 +12,16 @@ export const MemoComponent = ({task}) => {
     const textareaRows = useMemo(() => isExpanded ? 3 : 1, [isExpanded]);
 
     return (
+        <li>
         <textarea
             value={text}
             onChange={e => setText(e.target.value)}
             onFocus={() => setIsExpanded(true)}
             onBlur={handleBlur}
-            className="border rounded break-words"
+            className="border-2 rounded-lg break-words w-32"
             rows={textareaRows}
         />
+        </li>
     );
 };
 

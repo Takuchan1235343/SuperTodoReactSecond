@@ -12,8 +12,9 @@ export const Calendar = ({task}) => {
     }
 
     return (
-        <div className='border-2 rounded-lg px-4'>
-            <DatePicker selected={task.date.toDate()} onChange={handleChangeDate}/>
+        <div>
+            <DatePicker className='border-2 rounded-lg w-32 ' selected={task.date.toDate()}
+                        onChange={handleChangeDate}/>
         </div>
     );
 

@@ -53,15 +53,15 @@ const MenuTab = ({task, menuRef, buttonRef}) => {
     }, [])
 
     return createPortal(
-        <div
+        <ul
             ref={menuRef}
-            className="z-10 p-4 bg-white rounded-lg fixed border-2"
+            className="flex flex-col z-10 p-4 bg-white rounded-lg fixed border-2"
         >
             <StatusComboBox className="mx-1" task={task}/>
             <PriorityMatrix className="mx-1" task={task}/>
             <Calendar className="mx-1" task={task}/>
             <MemoComponent className="mx-1" task={task}/>
-        </div>,
+        </ul>,
         document.body
     )
 }

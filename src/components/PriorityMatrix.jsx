@@ -17,17 +17,18 @@ export const PriorityMatrix = ({task}) => {
 
 
     return (
-        <div>
-            <li>
-                <Button onClick={handleTogglePriority}>
-                    {PriorityText({priority: task.priority})}
-                </Button>
 
-            </li>
+        <li>
+            <Button onClick={handleTogglePriority}>
+                {PriorityText({priority: task.priority})}
+            </Button>
+
+
             {isShownPriority &&
                 <PriorityMatrixChart handlePrioritySelect={handlePrioritySelect} matrixRef={matrixRef}/>
             }
-        </div>
+        </li>
+
     )
 }
 
