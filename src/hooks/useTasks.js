@@ -69,6 +69,7 @@ export const useTasks = () => {
         incompleteTasks,
         completeTasks,
         correspondingTasks,
+        changeStatus,
     }
 
 
