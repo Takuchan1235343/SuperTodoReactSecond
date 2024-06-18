@@ -10,7 +10,6 @@ export const CompleteTaskList = (props) => {
                 <div
                     ref={provided.innerRef}
                     {...provided.draggableProps}
-                    {...provided.dragHandleProps}
                 >
                     <BaseTaskList
                         tasks={tasks}
