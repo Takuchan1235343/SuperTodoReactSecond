@@ -9,7 +9,6 @@ export const MainContent = () => {
         incompleteTasks,
         completeTasks,
         correspondingTasks,
-        moveTask
     } = useTasks()
 
     return (
@@ -18,9 +17,9 @@ export const MainContent = () => {
             <CreateTaskForm className="w-full"/>
 
             <div id='portal-root' className="w-full space-y-2 ">
-                <IncompleteTaskList tasks={incompleteTasks} moveTask={moveTask}/>
-                <CorrespondingTaskList tasks={correspondingTasks} moveTask={moveTask}/>
-                <CompleteTaskList tasks={completeTasks} moveTask={moveTask}/>
+                <IncompleteTaskList tasks={incompleteTasks}/>
+                <CorrespondingTaskList tasks={correspondingTasks}/>
+                <CompleteTaskList tasks={completeTasks}/>
             </div>
 
         </main>
