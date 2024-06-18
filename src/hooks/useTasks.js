@@ -51,6 +51,10 @@ export const useTasks = () => {
         setTasks(docs.map(doc => doc.data()))
     }), [])
 
+    const moveTask = async (taskId, newStatus) => {
+        await changeStatus(taskId, newStatus)
+    }
+
 
     const incompleteTasks = useMemo(
         () => tasks.filter(task => task.status === 'incomplete'), [tasks]
@@ -69,6 +73,7 @@ export const useTasks = () => {
         incompleteTasks,
         completeTasks,
         correspondingTasks,
+        moveTask
     }
 
 
