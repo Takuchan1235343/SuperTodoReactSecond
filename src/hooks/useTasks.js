@@ -3,7 +3,6 @@ import {setDoc, updateDoc, deleteDoc, onSnapshot} from 'firebase/firestore'
 import {randomId} from '../utils/randomId'
 import {useEffect, useMemo, useState} from 'react'
 
-//各ボタンの設定
 export const createTask = async (title) => {
     const newTask = {
         title,
@@ -11,7 +10,8 @@ export const createTask = async (title) => {
         status: 'incomplete',
         date: new Date(),
         memo: '',
-        priority: 0
+        priority: 0,
+        category: ''
     }
     await setDoc(refs.task(newTask.id), newTask)
 }
@@ -39,10 +39,14 @@ export const changeDate = async (taskId, newDate) => {
 export const changeMemo = async (taskId, newMemo) => {
     const taskRef = refs.task(taskId)
     await updateDoc(taskRef, {memo: newMemo})
-
 }
 
-//ステータスのよる仕分け
+export const changeCategory = async (taskId, newCategory) => {
+    const taskRef = refs.task(taskId)
+    await updateDoc(taskRef, {category: newCategory})
+
+
+}
 
 export const useTasks = () => {
     const [tasks, setTasks] = useState([])
@@ -55,7 +59,6 @@ export const useTasks = () => {
         await changeStatus(taskId, newStatus)
     }
 
-
     const incompleteTasks = useMemo(
         () => tasks.filter(task => task.status === 'incomplete'), [tasks]
     )
@@ -67,7 +70,6 @@ export const useTasks = () => {
     const correspondingTasks = useMemo(
         () => tasks.filter(task => task.status === 'corresponding'), [tasks]
     )
-
 
     return {
         incompleteTasks,
