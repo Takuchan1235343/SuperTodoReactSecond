@@ -1,5 +1,7 @@
 import {BaseTaskList} from "./BaseTaskList";
 import {useDrop} from "react-dnd";
+import {FilterTaskList} from "./FilterTaskList";
+
 
 export const IncompleteTaskList = (props) => {
     const {tasks, moveTask} = props

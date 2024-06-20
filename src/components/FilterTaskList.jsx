@@ -1,23 +1,22 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
-export const FilterTaskList = (props) => {
+export const FilterTaskList = ({tasks, onFilteredTasksChange}) => {
 
     const [category, setCategory] = useState('')
     const [priority, setPriority] = useState('')
 
-    const {tasks} = props
-
-    const handleChangeCategory = (e) => setCategory(e.target.value)
-    const handleChangePriority = (e) => setPriority(e.target.value)
-
-
-    const filterTasks = () => tasks.filter(task => {
-        return (
-            (category === '' || task.category === category) &&
-            (priority === '' || String(task.priority) === String(priority))
-        )
-    })
-
+    useEffect(() => {
+        const filterTasks = () => {
+            const filtered = tasks.filter(task => {
+                return (
+                    (category === '' || task.category === category) &&
+                    (priority === '' || String(task.priority) === String(priority))
+                )
+            })
+            onFilteredTasksChange(filtered)
+        }
+        filterTasks()
+    }, [category, priority, tasks, onFilteredTasksChange]);
 
     return (
         <div>
@@ -25,7 +24,7 @@ export const FilterTaskList = (props) => {
                 <select
                     id='category'
                     value={category}
-                    onChange={handleChangeCategory}
+                    onChange={(e) => setCategory(e.target.value)}
                     className='cursor-pointer border-2 rounded-lg p-1 px-4 text-center w-32'
                 >
                     <option value="">カテゴリー</option>
@@ -41,7 +40,7 @@ export const FilterTaskList = (props) => {
                 <select
                     id='priority'
                     value={priority}
-                    onChange={handleChangePriority}
+                    onChange={(e) => setPriority(e.target.value)}
                     className='cursor-pointer border-2 rounded-lg p-1 px-4 text-center w-32'
                 >
                     <option value="">優先度</option>
@@ -51,13 +50,6 @@ export const FilterTaskList = (props) => {
                     <option value="1">D</option>
                 </select>
             </div>
-            <ul>
-                {filterTasks().map((task) => (
-                    <li key={task.id}>
-                        {task.title}
-                    </li>
-                ))}
-            </ul>
         </div>
     );
 };
