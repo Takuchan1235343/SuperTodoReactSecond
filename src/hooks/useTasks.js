@@ -71,11 +71,16 @@ export const useTasks = () => {
         () => tasks.filter(task => task.status === 'corresponding'), [tasks]
     )
 
+    const allTasks = useMemo(
+        () => tasks, [tasks]
+    )
+
     return {
         incompleteTasks,
         completeTasks,
         correspondingTasks,
-        moveTask
+        moveTask,
+        allTasks
     }
 
 
